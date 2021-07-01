@@ -221,6 +221,9 @@ Ext.application({
 				current = current[0];                
                 // Remove pp... (launchpad.net ppa version)
 				current = current.split("pp");
+				current = current[0];
+				// Remove .EducaAnd
+				current = current.split(".EducaAnd");
 				current = current[0];				
                 
                 if (current=="" || latest==current) return; // No release number for dev packages

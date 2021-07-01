@@ -1,3 +1,15 @@
+intef-exe (3:2.6.EducaAnd) lucid; urgency=medium
+
+  * Junta de Andalucía - Consejería de Educación y Deporte
+    - New Styles: EducaAnd and EducaAnd Escolares.
+      Cofinanced with the European Union FEDER funds.
+
+  * Ignacio Gros
+    - Educaand_Adultos set as default Style.
+    - Fixed: Videos in PrettyPhoto (Lightbox) full screen mode. (#592)
+
+ -- eXeLearning <admin@exelearning.net>  Wed, 07 Jul 2021 11:00:00 +0200
+
 intef-exe (3:2.6) lucid; urgency=medium
 
   * Ignacio Gros
