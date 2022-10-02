@@ -172,11 +172,12 @@
 
 .MQP-Multimedia {
 	background-color: transparent;
-	margin: 0.5em auto;
 	max-width: 700px;
 	position: relative;
 	width: 100%;
 	height: auto;
+	margin: 0.6em auto;
+
 }
 
 .MQP-Detail {
@@ -185,9 +186,9 @@
 	border-radius: 0.6em;
 	background-color: #ffffff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
-	margin-top: 7em;
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
+	top: 50%; right: 50%;
+    transform: translate(50%,-50%);
 }
 
 .MQP-LinkCloseDetail {
@@ -255,7 +256,6 @@
 
 .MQP-MultimediaPoint {
 	border-radius: 0.6em;
-	margin: 0.5em auto;
 	width: 100%;
 	max-width: 1024px;
 	overflow: hidden;
@@ -433,6 +433,50 @@ img.MQP-ImageMain {
 	max-width: 300px;
 	width: 80%;
 }
+.MQP-ToolTip {
+	width: 300px;
+	min-height: 80px;
+	background-color: white;
+	border: 1px solid #ccc;
+	position: absolute;
+	z-index: 10;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	padding: 0.5em 0.5em;
+	font-size: 1em;
+	top: 0;
+	left: 0;
+	visibility: hidden
+}
+.MQP-ToolTipTitle {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 0.4em;
+	padding: 0.2em;
+	border-bottom: 1px solid grey;
+}
+.MQP-ToolTipClose {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background-color: #666666;
+	color: white;
+	top: 5px;
+	right: 5px;
+	text-align: center;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: .8em;
+	cursor: pointer;
+}
+.MQP-ToolTipText{
+	color:inherit
+	/*  */
+}
+
+
+
 
 /* Pegunta tipo test */
 
@@ -445,9 +489,9 @@ img.MQP-ImageMain {
 	border-radius: 0.6em;
 	max-width: 600px;
 	border: 1px solid #dddddd;
-	margin-top: 4em;
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
 }
 
 .MQP-QuestionDiv, .MQP-WordsDiv {
@@ -768,9 +812,11 @@ img.MQP-ImageMain {
 	min-width: 250px;
 	padding: 1em;
 	background-color: white;
-	margin-top: 6em;
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
+	top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+
+
 }
 
 .MQP-MessageModalTexto {
@@ -782,6 +828,7 @@ img.MQP-ImageMain {
 	margin-top: 1em;
 	width: 100%;
 	display: none;
+	
 }
 
 .MQP-MessageModalTexto p {
@@ -1185,12 +1232,14 @@ div:fullscreen .MQP-LinkCloseDetail{
 .MQP-Test {
 	width: 100%;
 	min-height: 90%;
-	position: absolute;
 	top: 3em;
 	left: 0;
 	z-index: 3100;
 	background-color: white;
-	display: none
+	display: none;
+	position: absolute;
+	top: 50%; right: 50%;
+	transform: translate(50%,-50%);
 }
 
 .MQP-LinkCloseOptions {
@@ -1419,9 +1468,7 @@ div:fullscreen .MQP-LinkCloseDetail{
 		padding: 0.6em;
 		border-radius: 0.6em;
 	}
-	.MQP-Detail {
-		margin-top: 0.3em;
-	}
+
 	.MQP-ContentRect {
 		box-shadow: none;
 		border: none;
