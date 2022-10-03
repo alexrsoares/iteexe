@@ -13,8 +13,8 @@
 	padding: 0;
 	width: 100%;
 	max-width: 1100px;
-	height: auto;
 	background-color: transparent;
+	height: auto;
 }
 
 .MQP-MainContainer * {
@@ -64,9 +64,7 @@
 	max-width: 1100px;
 	position: relative;
 	width: 100%;
-	height: auto;
 	background-color: transparent;
-
 }
 
 /* barra de puntuaciones */
@@ -174,10 +172,8 @@
 	background-color: transparent;
 	max-width: 700px;
 	position: relative;
-	width: 100%;
-	height: auto;
+	width: 96%;
 	margin: 0.6em auto;
-
 }
 
 .MQP-Detail {
@@ -187,8 +183,6 @@
 	background-color: #ffffff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
 	position: absolute;
-	top: 50%; right: 50%;
-    transform: translate(50%,-50%);
 }
 
 .MQP-LinkCloseDetail {
@@ -207,7 +201,7 @@
 	left: 0;
 	z-index: 100000;
 	background-color: rgb(255, 255, 255, .4);
-	display: none;
+	visibility: hidden,
 }
 
 .MQP-TitlePoint {
@@ -336,7 +330,7 @@ img.MQP-ImageMain {
 .MQP-LinkSlideLeft {
 	position: absolute;
 	display: block;
-	background-image: url(mapaslideleft.png);
+	background-image: url(mapaslideleft.svg);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -349,7 +343,7 @@ img.MQP-ImageMain {
 .MQP-LinkSlideRight {
 	position: absolute;
 	display: block;
-	background-image: url(mapaslidelrigh.png);
+	background-image: url(mapaslidelrigh.svg);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -434,7 +428,8 @@ img.MQP-ImageMain {
 	width: 80%;
 }
 .MQP-ToolTip {
-	width: 300px;
+	width: 400px;
+	max-width: 100%;
 	min-height: 80px;
 	background-color: white;
 	border: 1px solid #ccc;
@@ -445,7 +440,8 @@ img.MQP-ImageMain {
 	font-size: 1em;
 	top: 0;
 	left: 0;
-	visibility: hidden
+	visibility: hidden;
+	z-index: 3101;
 }
 .MQP-ToolTipTitle {
 	text-align: center;
@@ -456,8 +452,8 @@ img.MQP-ImageMain {
 }
 .MQP-ToolTipClose {
 	position: absolute;
-	width: 15px;
-	height: 15px;
+	width: 20px;
+	height: 20px;
 	background-color: #666666;
 	color: white;
 	top: 5px;
@@ -469,6 +465,7 @@ img.MQP-ImageMain {
 	align-items: center;
 	font-size: .8em;
 	cursor: pointer;
+	z-index:100
 }
 .MQP-ToolTipText{
 	color:inherit
@@ -489,9 +486,10 @@ img.MQP-ImageMain {
 	border-radius: 0.6em;
 	max-width: 600px;
 	border: 1px solid #dddddd;
+	top:3em;
 	position: absolute;
-    top: 50%; right: 50%;
-    transform: translate(50%,-50%);
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .MQP-QuestionDiv, .MQP-WordsDiv {
@@ -844,7 +842,7 @@ img.MQP-ImageMain {
 }
 
 .MQP-AcceptButton {
-	background: url(exequextreply.png) no-repeat;
+	background: url(exequextreply.svg) no-repeat;
 	background-size: 100% 100%;
 	cursor: pointer;
 	height: 1.7rem;
@@ -854,7 +852,7 @@ img.MQP-ImageMain {
 }
 
 .MQP-CancelButton {
-	background: url(exequextrerrors.png) no-repeat;
+	background: url(exequextrerrors.svg) no-repeat;
 	background-size: 100% 100%;
 	cursor: pointer;
 	height: 1.7rem;
@@ -899,7 +897,7 @@ img.MQP-ImageMain {
 }
 .MQP-MainContainer .MQP-IconPlayIdentify {
 	background-size: 100% 100%;
-	background-image: url(mapam2.svg);
+	background-image: url(mapaplaysound.svg);
 	background-size: 100% 100%;
 	height: 1.3em;
 	margin: 0;
@@ -1075,32 +1073,32 @@ img.MQP-ImageMain {
 }
 
 .MQP-MainContainer .exeQuextIcons-Submit {
-	background: url(exequextreply.png) no-repeat;
+	background: url(exequextreply.svg) no-repeat;
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Minimize {
-	background-image: url(exequextmin.png);
+	background-image: url(mapaminimizar.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Hit {
-	background-image: url(exequexthits.png);
+	background-image: url(exequexthits.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Error {
-	background-image: url(exequextrerrors.png);
+	background-image: url(exequextrerrors.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Score {
-	background-image: url(exequextscore.png);
+	background-image: url(exequextscore.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Number {
-	background-image: url(exequextnumber.png);
+	background-image: url(exequextnumber.svg);
 	background-size: 100% 100%;
 }
 
@@ -1238,8 +1236,6 @@ div:fullscreen .MQP-LinkCloseDetail{
 	background-color: white;
 	display: none;
 	position: absolute;
-	top: 50%; right: 50%;
-	transform: translate(50%,-50%);
 }
 
 .MQP-LinkCloseOptions {
@@ -1560,6 +1556,16 @@ div:fullscreen .MQP-LinkCloseDetail{
 	.MQP-MessageGOScore>div {
 		margin-bottom: 0;
 	}
+	.MQP-ToolTip, .MQP-Detail {
+		width: 94%;
+		max-width: 100%;
+		box-shadow: none;
+		padding: 0.3em 0.3em;
+		font-size: 0.8em;
+		top: 2em;
+		left: 3%;;
+	}
+	
 }
 
 @media screen and (max-width:340px) {

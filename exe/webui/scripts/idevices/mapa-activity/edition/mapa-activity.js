@@ -340,7 +340,28 @@ var $exeDevice = {
         field.before(html);
         $exeAuthoring.iDevice.tabs.init("gameQEIdeviceForm");
         $exeAuthoring.iDevice.gamification.scorm.init();
-        $exeDevice.enableForm(field);
+        tinymce.init({
+            selector: '#mapaToolTip',
+            height: 100,
+            language: "all",
+            width: '100%',
+            plugins: [
+                'code paste textcolor  autolink exelink exealign'
+            ],
+            paste_as_text: false,
+            entity_encoding: "raw",
+            toolbar: 'undo redo | removeformat | fontselect | formatselect | fontsizeselect |  bold italic underline |  alignleft aligncenter alignright alignjustify | forecolor backcolor  | exelink  unlink',
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            menubar: false,
+            statusbar: false,
+            setup: function (ed) {
+                ed.on('init', function (e) {
+                    $exeDevice.enableForm(field);
+                });
+            }
+        });
+
+        
     },
     getMultimediaPoint: function (path) {
         var html = '<div class="MQE-EPointContainer"  id="mapaPContainer">\
@@ -622,7 +643,11 @@ var $exeDevice = {
                 $('#mapaText').val(p.eText);
             }
         } else if (p.type == 7) {
-            $('#mapaToolTip').val(p.toolTip);
+            if (tinyMCE.get('mapaToolTip')) {
+                tinyMCE.get('mapaToolTip').setContent(p.toolTip);
+            } else {
+                $('#mapaToolTip').val(p.toolTip);
+            }
         }
         $exeDevice.changeIcon(p.iconType, p.x, p.y, p.x1, p.y1);
         $exeDevice.stopSound();
@@ -726,6 +751,9 @@ var $exeDevice = {
             case 7:
                 $('#mapaDataToolTip').show();
                 $('#mapaDataFooter').hide();
+                if (tinyMCE.get('mapaToolTip')) {
+                    tinyMCE.get('mapaToolTip').show();
+                }
                 break;
             default:
                 break;
@@ -1166,7 +1194,12 @@ var $exeDevice = {
         p.iconType = parseInt($('#mapaIconType').children("option:selected").val());
         p.question = $('#mapaIdentify').val();
         p.question_audio = $('#mapaURLAudioIdentify').val();
-        p.toolTip = $('#mapaToolTip').val();
+       
+        if (tinyMCE.get('mapaToolTip')) {
+            p.toolTip = tinyMCE.get('mapaToolTip').getContent();
+        } else {
+            p.toolTip= $('#mapaToolTip').val();
+        }
         if ($("#mapaPContainer").is(":visible")) {
             p.video = $('#mapaPURLYoutube').val().trim();
             p.url = $('#mapaPURLImage').val().trim();
@@ -2062,7 +2095,8 @@ var $exeDevice = {
             $('#mapaPURLImage').val(selectedFile);
             $('#mapaPTitle').val($('#mapaTitle').val());
             $('#mapaPFooter').val($('#mapaFooter').val());
-            $('#mapaPContainer').fadeIn();
+            $('#mapaPContainer').css('display','flex');
+            $('#mapaCubierta').css('display','flex');
             $('#mapaCubierta').show();
             $exeDevice.showImage(selectedFile, alt);
         });
@@ -2099,7 +2133,8 @@ var $exeDevice = {
                 return false;
             }
             var alt = $('#mapaPAltImage').val();
-            $('#mapaPContainer').fadeIn();
+            $('#mapaPContainer').css('display','flex');
+            $('#mapaCubierta').css('display','flex');
             $('#mapaCubierta').show();
             $('#mapaPURLImage').val(selectedFile);
             $('#mapaPTitle').val($('#mapaTitle').val());
@@ -2259,8 +2294,9 @@ var $exeDevice = {
         $('#mapaSAltImage').val($exeDevice.slides[i].alt);
         $('#mapaSFooter').val($exeDevice.slides[i].footer);
         $('#mapaNumberSlide').val(i + 1);
+        $('#mapaCubierta').css('display','flex');
         $('#mapaCubierta').show();
-        $('#mapaSContainer').fadeIn();
+        $('#mapaSContainer').css('display','flex');
         $exeDevice.showImageSlide($('#mapaSURLImage').val(), $('#mapaSAltImage').val());
         $exeDevice.stopSound();
         $exeDevice.stopVideo();
@@ -2841,7 +2877,8 @@ var $exeDevice = {
         } else {
             $exeDevice.showMessage(_("This video is not currently available"));
         }
-        $('#mapaPContainer').fadeIn();
+        $('#mapaPContainer').css('display','flex');
+        $('#mapaCubierta').css('display','flex');
         $('#mapaCubierta').show();
     },
 
@@ -2896,6 +2933,10 @@ var $exeDevice = {
         $('#mapaToolTip').val('');
         if (tinyMCE.get('mapaText')) {
             tinyMCE.get('mapaText').setContent('');
+        }
+
+        if (tinyMCE.get('mapaToolTip')) {
+            tinyMCE.get('mapaToolTip').setContent('');
         }
 
         $('#mapaPTitle').val('');
@@ -3413,6 +3454,7 @@ var $exeDevice = {
             p.video = $exeDevice.getIDYoutube($('#mapaURLYoutube').val().trim()) ? $('#mapaURLYoutube').val() : '';
         }
         p.eText = tinyMCE.get('mapaText').getContent();
+        p.toolTip = tinyMCE.get('mapaToolTip').getContent();
         return p;
     },
     clickArea: function (epx, epy, epx1, epy1) {
