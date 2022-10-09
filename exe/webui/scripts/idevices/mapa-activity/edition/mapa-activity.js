@@ -346,21 +346,26 @@ var $exeDevice = {
             language: "all",
             width: '100%',
             plugins: [
-                'code paste textcolor  autolink exelink exealign'
+                'lists link code paste textcolor image'
             ],
-            paste_as_text: false,
+            paste_as_text: true,
             entity_encoding: "raw",
-            toolbar: 'undo redo | removeformat | fontselect | formatselect | fontsizeselect |  bold italic underline |  alignleft aligncenter alignright alignjustify | forecolor backcolor  | exelink  unlink',
-            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            browser_spellcheck: true,
+            toolbar: 'undo redo |  bold italic underline strikethrough | alignleft aligncenter alignright | forecolor backcolor  | bullist numlist | link | image | code',
             menubar: false,
             statusbar: false,
+            convert_urls: false,
+            content_css: "css/tinymce.css",
+            file_browser_callback: function(field_name, url, type, win){
+				exe_tinymce.chooseImage(field_name, url, type, win);
+			},
             setup: function (ed) {
                 ed.on('init', function (e) {
                     $exeDevice.enableForm(field);
                 });
-            }
+            },
+            
         });
-
         
     },
     getMultimediaPoint: function (path) {
@@ -953,7 +958,7 @@ var $exeDevice = {
     },
 
     setMedias: function (pts, $images, $texts, $audios, $imgmpas, $audiosIdentifyLink, $imagesSlides,  $toolTips) {
-        for (var i = 0; i < pts.length; i++) {
+         for (var i = 0; i < pts.length; i++) {
             var p = pts[i];
             p.question_audio = p.question_audio || '';
             if (p.type != 5) {                
@@ -961,7 +966,7 @@ var $exeDevice = {
                     $exeDevice.setImage(p, $images);
                 } else if (p.type == 2 && typeof p.eText != "undefined" && p.eText.trim().length > 0) {
                     $exeDevice.setText(p, $texts);
-                }else if (p.type == 7 && typeof p.toolTip != "undefined" && p.toolTip.trim().length > 0) {
+                }else if (p.type == 7 && typeof p.toolTip != "undefined") {
                     $exeDevice.setToolTip(p, $toolTips);
                 }
                 if (p.type != 1 && typeof p.audio != "undefined" && !p.audio.indexOf('http') == 0 && p.audio.length > 4) {
@@ -1041,7 +1046,6 @@ var $exeDevice = {
     setToolTip: function (p, $tt) {
         $tt.each(function () {
             var id = $(this).data('id');
-            
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
                 p.toolTip = $(this).html();
                 return;
@@ -1147,12 +1151,10 @@ var $exeDevice = {
                 medias.maps += rdata.maps;
                 medias.texts += rdata.texts;
                 medias.slides += rdata.slides;
-                medias.tooltips += rdata.tooltips;
-               
+                medias.tooltips += rdata.tooltips;               
             }
 
         }
-
          return medias
     },
     validateDataLevel: function () {
