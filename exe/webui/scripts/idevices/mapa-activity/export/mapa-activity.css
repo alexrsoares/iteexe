@@ -502,11 +502,7 @@ img.MQP-ImageMain {
 	padding: 1em;
 	border-radius: 0.6em;
 	max-width: 600px;
-	border: 1px solid #dddddd;
-	top:4em;
-	left:50%;
-	transform:translateX(50%);
-	position: absolute;
+	margin-top: 4em;
 	display: none;
 }
 
@@ -829,7 +825,7 @@ img.MQP-ImageMain {
 	left:0;
 	position: absolute;
 	display: none;
-	z-index: 3003;
+	z-index: 3103;
 }
 
 .MQP-MessageModal {
@@ -844,7 +840,7 @@ img.MQP-ImageMain {
 	left:0;
 	position: absolute;
 	display: none;
-	z-index: 3003;
+	z-index: 3103;
 }
 
 .MQP-MessageModalTexto {
