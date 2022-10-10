@@ -337,8 +337,6 @@ var $eXeMapa = {
         mOptions.levels = [];
         mOptions.levels.push($.extend(true, {}, mOptions.activeMap));
         mOptions.level = 0;
-        mOptions.topButton = 0;
-        mOptions.heightButton = 0;
         if (mOptions.evaluation == 0) {
             mOptions.gameStarted = true;
         } else if (mOptions.evaluation == 4) {
@@ -346,6 +344,8 @@ var $eXeMapa = {
             mOptions.gameStarted = true;
         }
         mOptions.playerAudio = "";
+        mOptions.loadingURL = false;
+        mOptions.autoShow = typeof mOptions.autoShow == "undefinide" ? false : mOptions.autoShow;
         return mOptions;
     },
     getDataGame1: function (pts, evaluation) {
@@ -1287,7 +1287,6 @@ var $eXeMapa = {
         $('#mapaGameContainer-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         $('#mapaFTests-' + instance).hide();
-        $('#mapaCubierta-' + instance).hide();
         $('#mapaToolBarL-' + instance).hide();
         $('#mapaMessageMaximize-' + instance).text(mOptions.msgs.msgPlayStart);
         $('#mapaVideoPoint-' + instance).hide();
@@ -1305,7 +1304,6 @@ var $eXeMapa = {
         $('#mapaStartGame-' + instance).text(mOptions.msgs.msgPlayStart);
         $('#mapaMessageFindP-' + instance).hide();
         $('#mapaStartGame-' + instance).hide();
-        $('#mapaCubierta-' + instance).css('display', 'flex');
         $('#mapaCubierta-' + instance).hide()
         if (mOptions.evaluation == 1 || mOptions.evaluation == 2 || mOptions.evaluation == 3) {
             $('#mapaStartGame-' + instance).show();
@@ -1332,12 +1330,10 @@ var $eXeMapa = {
             $('#mapaAccessMessage-' + instance).text(mOptions.itinerary.messageCodeAccess);
             $('#mapaFMessageAccess-' + instance).show();
             $('#mapaCubierta' + instance).show();
-            mOptions.showData=true;
-            setTimeout(function(){
-                $eXeMapa.placePointInWindow($('#mapaFMessages-' + instance),-1,instance)
-                $('#mapaCubierta' + instance).hide();
-            },500)
-            //$('#mapaCubierta-' + instance).fadeIn(100, function () {
+            mOptions.showData = true;
+            setTimeout(function () {
+                $eXeMapa.placePointInWindow($('#mapaFMessages-' + instance), -1, instance)
+            }, 500)
         }
         if (!mOptions.hasAreas || !mOptions.showActiveAreas || mOptions.evaluation == 1) {
             $('#mapaLinkAreas-' + instance).hide();
@@ -1359,7 +1355,7 @@ var $eXeMapa = {
         });
         $("#mapaLinkMinimize-" + instance).on('click touchstart', function (e) {
             e.preventDefault();
-            if(mOptions.showData) return;
+            if (mOptions.showData) return;
             $("#mapaGameContainer-" + instance).hide();
             $("#mapaGameMinimize-" + instance).css('visibility', 'visible').show();
             $("#mapaMainContainer-" + instance).css('height', 'auto').show();
@@ -1371,7 +1367,7 @@ var $eXeMapa = {
         };
         $("#mapaLinkFullScreen-" + instance).on('click touchstart', function (e) {
             e.preventDefault();
-            if(mOptions.showData) return;
+            if (mOptions.showData) return;
             var element = document.getElementById('mapaGameContainer-' + instance);
             $eXeMapa.toggleFullscreen(element, instance);
         });
@@ -1408,6 +1404,11 @@ var $eXeMapa = {
                     mOptions.visiteds.push(id);
                 }
             }
+            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+                mOptions.showData = true;
+                $eXeMapa.showPoint(n, instance);
+            }
+
         });
         $('#mapaLinkAudio-' + instance).on('click', function (e) {
             e.preventDefault();
@@ -1440,7 +1441,12 @@ var $eXeMapa = {
                     mOptions.visiteds.push(id);
                 }
             }
+            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+                mOptions.showData = true;
+                $eXeMapa.showPoint(n, instance);
+            }
         });
+
         $('#mapaLinkAreas-' + instance).on('mouseenter click', function (e) {
             e.preventDefault();
             $('#mapaMultimedia-' + instance).find('.MQP-Area').css({
@@ -1463,17 +1469,11 @@ var $eXeMapa = {
         });
         $('#mapaFMessageInfoAccept-' + instance).on('click', function (e) {
             e.preventDefault();
-            $('#mapaGameContainer-' + instance).css('height', 'auto');
-            $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                $eXeMapa.hideCover(instance);
-            });
-
+            $eXeMapa.closePoint(instance);
         });
         $('#mapaMessageGONo-' + instance).on('click', function (e) {
             e.preventDefault();
-            $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                $eXeMapa.hideCover(instance);
-            });
+            $eXeMapa.hideCover(instance);
             if (mOptions.evaluation != 0) {
                 $eXeMapa.endFind(instance);
 
@@ -1487,9 +1487,7 @@ var $eXeMapa = {
             e.preventDefault();
             if (mOptions.evaluation == 1 || mOptions.evaluation == 2 || mOptions.evaluation == 3) {
                 $eXeMapa.startFinds(instance);
-                $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                    $eXeMapa.hideCover(instance);
-                });
+                $eXeMapa.hideCover(instance);
                 if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {
                     $eXeMapa.showFind(instance, 0);
                 }
@@ -1505,9 +1503,7 @@ var $eXeMapa = {
             e.preventDefault();
             $eXeMapa.stopVideo(instance);
             $eXeMapa.stopSound(instance);
-            $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                $eXeMapa.hideCover(instance);
-            });
+            $eXeMapa.hideCover(instance);
 
         });
         $('#mapaLinkClose1-' + instance).on('click', function (e) {
@@ -1548,8 +1544,6 @@ var $eXeMapa = {
                 return;
             }
             mOptions.showData = true;
-            mOptions.topButton = Math.round($(this).offset().top);
-            mOptions.heightButton = Math.round($(this).innerHeight());
             var n = $(this).data('number'),
                 id = $(this).data('id');
             if (!mOptions.gameOver && (mOptions.evaluation == 1 || mOptions.evaluation == 2 || mOptions.evaluation == 3)) {
@@ -1564,6 +1558,26 @@ var $eXeMapa = {
                 }
             } else {
                 $eXeMapa.showPoint(n, instance);
+            }
+        });
+
+
+        $('#mapaToolTip-' + instance).on('mouseleave', function (e) {
+            e.preventDefault();
+            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+                $eXeMapa.closeToolTip(instance)
+            }
+        });
+        $('#mapaFDetails-' + instance).on('mouseleave', function (e) {
+            e.preventDefault();
+            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+                $eXeMapa.closePoint(instance)
+            }
+        });
+        $('#mapaFMessages-' + instance).on('mouseleave', function (e) {
+            e.preventDefault();
+            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+                $eXeMapa.closePoint(instance)
             }
         });
         $('#mapaTest-' + instance).on('click', '.MPQ-OptionTest', function (e) {
@@ -1641,6 +1655,26 @@ var $eXeMapa = {
         $eXeMapa.placePointInWindow($('#mapaFDetails-' + instance), mOptions.activeMap.active, instance)
 
     },
+    showPointLink: function (num, instance) {
+        var mOptions = $eXeMapa.options[instance],
+            q = mOptions.activeMap.pts[num];
+        if (!mOptions.loadingURL) {
+            mOptions.loadingURL = true;
+            var win = window.open(q.link, '_blank');
+            if (win) { //Browser has allowed it to be opened
+                win.focus();
+            } else {
+                //Browser has blocked it
+                alert('Please allow popups for this website');
+            }
+            setTimeout(function () {
+                mOptions.showData = false;
+                mOptions.loadingURL = false;
+            }, 1000)
+        }
+
+    },
+
     showToolTip: function (num, instance) {
         var mOptions = $eXeMapa.options[instance],
             q = mOptions.activeMap.pts[num],
@@ -1662,8 +1696,9 @@ var $eXeMapa = {
         $eXeMapa.placePointInWindow($('#mapaToolTip-' + instance), num, instance)
     },
 
-    showPointSound: function (instance) {
-        var mOptions = $eXeMapa.options[instance]
+    showPointNone: function (num, instance) {
+        var mOptions = $eXeMapa.options[instance],
+            q = mOptions.activeMap.pts[num];
         if (mOptions.evaluation == 1 || mOptions.evaluation == 2 || mOptions.evaluation == 3) {
             mOptions.activeTitle++;
             if (mOptions.activeTitle > mOptions.numberQuestions) {
@@ -1672,7 +1707,7 @@ var $eXeMapa = {
                 $eXeMapa.showFind(instance, mOptions.activeTitle);
             }
         } else {
-            $eXeMapa.showMessageModal(instance, q.title, 1, 0, mOptions.activeMap.active);
+            $eXeMapa.showMessageModal(instance, q.title, 1, 0, num);
         }
         mOptions.visiteds.push(q.id);
         $eXeMapa.messageAllVisited(instance);
@@ -1743,8 +1778,8 @@ var $eXeMapa = {
             $gamec.innerHeight(hMain);
             $main.innerHeight($main.outerHeight(true) + 35);
         }
-        if (typeof num == "undefined" || num < 0 || mOptions.evaluation == 1 || $gamec.innerWidth() < 650) {
-            if ( num<1){
+        if (mOptions.gameOver || typeof num == "undefined" || num < 0 || mOptions.evaluation == 1 || $gamec.innerWidth() < 650) {
+            if (num < 1) {
                 tWindow = -tMulti + 70;
             }
         } else {
@@ -1776,6 +1811,7 @@ var $eXeMapa = {
             'left': lWindow
         });
         $window.fadeIn();
+
     },
 
     closeToolTip: function (instance) {
@@ -1884,38 +1920,34 @@ var $eXeMapa = {
         $('#mapaFMessages-' + instance).hide();
         $('#mapaTest-' + instance).hide();
         $('#mapaGameContainer-' + instance).css('height', 'auto');
-        $('#mapaCubierta-' + instance).css('height', 'auto');
         $('#mapaText-' + instance).css('height', 'auto');
-        $('#mapaCubierta-' + instance).fadeOut(100, function () {
-            if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {
-                $eXeMapa.hideMapDetail(instance, true);
+        if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {
+            $eXeMapa.hideMapDetail(instance, true);
+        }
+        $eXeMapa.hideCover(instance);
+        if (mOptions.evaluation == 1) {
+            $eXeMapa.showMessage(0, '', instance);
+            if (mOptions.activeMap.pts.length - mOptions.hits - mOptions.errors <= 0) {
+                $eXeMapa.gameOver(instance);
             }
-            $eXeMapa.hideCover(instance);
-            if (mOptions.evaluation == 1) {
-                $eXeMapa.showMessage(0, '', instance);
-                if (mOptions.activeMap.pts.length - mOptions.hits - mOptions.errors <= 0) {
-                    $eXeMapa.gameOver(instance);
-                }
-            } else if (mOptions.evaluation == 2) {
-                mOptions.activeTitle++;
-                if (mOptions.activeTitle >= mOptions.numberQuestions) {
-                    $eXeMapa.gameOver(instance);
-                } else {
-                    $eXeMapa.showFind(instance, mOptions.activeTitle);
-                }
-            } else if (mOptions.evaluation == 3) {
-                mOptions.activeTitle++;
-                if (mOptions.hits >= mOptions.numberQuestions) {
-                    $eXeMapa.gameOver(instance);
-                } else {
-                    $eXeMapa.showFind(instance, mOptions.activeTitle);
-                }
+        } else if (mOptions.evaluation == 2) {
+            mOptions.activeTitle++;
+            if (mOptions.activeTitle >= mOptions.numberQuestions) {
+                $eXeMapa.gameOver(instance);
+            } else {
+                $eXeMapa.showFind(instance, mOptions.activeTitle);
             }
-            $eXeMapa.showClue(instance);
-            $eXeMapa.messageAllVisited(instance);
-            mOptions.showData = false;
-        });
-
+        } else if (mOptions.evaluation == 3) {
+            mOptions.activeTitle++;
+            if (mOptions.hits >= mOptions.numberQuestions) {
+                $eXeMapa.gameOver(instance);
+            } else {
+                $eXeMapa.showFind(instance, mOptions.activeTitle);
+            }
+        }
+        $eXeMapa.showClue(instance);
+        $eXeMapa.messageAllVisited(instance);
+        mOptions.showData = false;
 
         // $eXeMapa.updateHeightGame(instance,-1)
     },
@@ -2213,13 +2245,11 @@ var $eXeMapa = {
                 $eXeMapa.initialScore = score;
             }
         }
-        $('#mapaCubierta-' + instance).fadeIn(100, function () {
-            $eXeMapa.hideCover(instance);
-
-            $('#mapaFMessageOver-' + instance).show();
-            $('#mapaFMessages-' + instance).show();
-
-        });
+        $eXeMapa.hideCover(instance);
+        $('#mapaFMessageOver-' + instance).show();
+        setTimeout(function () {
+            $eXeMapa.placePointInWindow($('#mapaFMessages-' + instance), -1, instance)
+        }, 500)
 
     },
     updateNumberQuestion: function (numq, instance) {
@@ -2315,7 +2345,6 @@ var $eXeMapa = {
         $('#mapaTest-' + instance).css({
             'top': htb + 'px'
         });
-        $('#mapaCubierta-' + instance).hide();
         mOptions.showData = false;
     },
     answerRect: function (instance, answer) {
@@ -2386,31 +2415,31 @@ var $eXeMapa = {
         $('#mapaLinkCloseDetail-' + instance).hide();
 
         if (correct) {
-            if (mOptions.activeMap.pts[num].type < 4 || mOptions.activeMap.pts[num].type == 6) {
-                $('#mapaCubierta-' + instance).fadeIn(100, function () {
-                    $eXeMapa.showMessageDetail(instance, message, 2);
-                    $eXeMapa.showPoint(num, instance);
-
-                });
+            if (mOptions.activeMap.pts[num].type < 4 || mOptions.activeMap.pts[num].type == 6 ) {
+                $eXeMapa.showMessageDetail(instance, message, 2);
+                $eXeMapa.showPoint(num, instance);
             } else if (mOptions.activeMap.pts[num].type == 7) {
                 $eXeMapa.showToolTip(num, instance)
             } else {
-                $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 1, 2, num);
+               
+                if(mOptions.activeMap.pts[num].type == 8){
+                    $eXeMapa.showPointLink(num,instance)
+                }else{
+                   $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 1, 2, num);
+                }
                 setTimeout(function () {
-                    $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                        if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {
-                            mOptions.activeTitle++;
-                        }
-                        $eXeMapa.hideMapDetail(instance, true);
-                        if (mOptions.activeTitle >= mOptions.numberQuestions || mOptions.evaluation == 3 && mOptions.hits >= mOptions.numberQuestions) {
-                            $eXeMapa.gameOver(instance);
-                        } else {
-                            $eXeMapa.showFind(instance, mOptions.activeTitle);
-                        }
-                        $eXeMapa.hideCover(instance);
-                        $eXeMapa.hideMapDetail(instance, true);
-                        mOptions.showData = false;
-                    });
+                    if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {
+                        mOptions.activeTitle++;
+                    }
+                    $eXeMapa.hideMapDetail(instance, true);
+                    if (mOptions.activeTitle >= mOptions.numberQuestions || mOptions.evaluation == 3 && mOptions.hits >= mOptions.numberQuestions) {
+                        $eXeMapa.gameOver(instance);
+                    } else {
+                        $eXeMapa.showFind(instance, mOptions.activeTitle);
+                    }
+                    $eXeMapa.hideCover(instance);
+                    $eXeMapa.hideMapDetail(instance, true);
+                    mOptions.showData = false;
                 }, mOptions.timeShowSolution * 1000);
             }
         } else {
@@ -2424,22 +2453,19 @@ var $eXeMapa = {
 
             $eXeMapa.showMessageModal(instance, message, 2, 0, num);
             setTimeout(function () {
-                $('#mapaCubierta-' + instance).fadeOut(100, function () {
+                if (mOptions.evaluation == 2) {
+                    mOptions.activeTitle++;
+                }
+                $eXeMapa.hideMapDetail(instance, true);
+                if (mOptions.activeTitle >= mOptions.numberQuestions) {
+                    $eXeMapa.gameOver(instance);
+                } else {
                     if (mOptions.evaluation == 2) {
-                        mOptions.activeTitle++;
+                        $eXeMapa.showFind(instance, mOptions.activeTitle);
                     }
-                    $eXeMapa.hideMapDetail(instance, true);
-                    if (mOptions.activeTitle >= mOptions.numberQuestions) {
-                        $eXeMapa.gameOver(instance);
-                    } else {
-                        if (mOptions.evaluation == 2) {
-                            $eXeMapa.showFind(instance, mOptions.activeTitle);
-                        }
-                    }
-                    $eXeMapa.hideCover(instance);
-                    mOptions.showData = false;
-
-                });
+                }
+                $eXeMapa.hideCover(instance);
+                mOptions.showData = false;
 
             }, mOptions.timeShowSolution * 1000);
         }
@@ -2488,9 +2514,9 @@ var $eXeMapa = {
             $eXeMapa.stopSound(instance);
         }
         $eXeMapa.showClue(instance);
-        $eXeMapa.hideModalWindows(instance)
+        $eXeMapa.hideModalWindows(instance);
         if (q.type == 4) {
-            $eXeMapa.showPointSound(instance);
+            $eXeMapa.showPointNone(i, instance);
             return;
         }
         mOptions.waitPlayVideo = false;
@@ -2499,7 +2525,7 @@ var $eXeMapa = {
         $eXeMapa.hideModalMessages(instance);
         mOptions.visiteds.push(q.id);
 
-        var w = $('#mapaCubierta-' + instance).width();
+        var w = $('#mapaGameContainer-' + instance).width();
         if (window.innerWidth < 550) {
             w = w * 0.90;
         } else if (window.innerWidth < 720) {
@@ -2528,9 +2554,13 @@ var $eXeMapa = {
             $eXeMapa.showPointText(i, instance);
         } else if (q.type == 7) {
             $eXeMapa.showToolTip(i, instance);
+        } else if (q.type == 8) {
+            $eXeMapa.showPointLink(i, instance);
+
         } else if (q.type === 3) {
             $('#mapaMultimediaPoint-' + instance).show();
             $('#mapaLinkAudio-' + instance).show();
+            $eXeMapa.showPointImage(i, instance);
         } else if (q.type == 5) {
             $eXeMapa.showMapDetail(instance, i);
         } else if (q.type == 6) {
@@ -2673,10 +2703,8 @@ var $eXeMapa = {
     enterCodeAccess: function (instance) {
         var mOptions = $eXeMapa.options[instance];
         if (mOptions.itinerary.codeAccess === $('#mapaCodeAccessE-' + instance).val()) {
-            $('#mapaCubierta-' + instance).fadeOut(100, function () {
-                $eXeMapa.hideCover(instance);
-            });
-            mOptions.showData=false;
+            $eXeMapa.hideCover(instance);
+            mOptions.showData = false;
         } else {
             $('#mapaMesajeAccesCodeE-' + instance).fadeOut(300).fadeIn(200).fadeOut(300).fadeIn(200);
             $('#mapaCodeAccessE-' + instance).val('');
