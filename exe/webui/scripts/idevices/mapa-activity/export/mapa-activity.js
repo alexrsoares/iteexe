@@ -1404,7 +1404,7 @@ var $eXeMapa = {
                     mOptions.visiteds.push(id);
                 }
             }
-            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 mOptions.showData = true;
                 $eXeMapa.showPoint(n, instance);
             }
@@ -1441,7 +1441,7 @@ var $eXeMapa = {
                     mOptions.visiteds.push(id);
                 }
             }
-            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 mOptions.showData = true;
                 $eXeMapa.showPoint(n, instance);
             }
@@ -1564,19 +1564,19 @@ var $eXeMapa = {
 
         $('#mapaToolTip-' + instance).on('mouseleave', function (e) {
             e.preventDefault();
-            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 $eXeMapa.closeToolTip(instance)
             }
         });
         $('#mapaFDetails-' + instance).on('mouseleave', function (e) {
             e.preventDefault();
-            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 $eXeMapa.closePoint(instance)
             }
         });
         $('#mapaFMessages-' + instance).on('mouseleave', function (e) {
             e.preventDefault();
-            if (mOptions.autoShow && mOptions.evaluation == 0 || mOptions.evaluation == 4) {
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 $eXeMapa.closePoint(instance)
             }
         });
@@ -2005,7 +2005,7 @@ var $eXeMapa = {
         var mOptions = $eXeMapa.options[instance];
         if ($eXeMapa.getNumberVisited(mOptions.visiteds) < Math.floor(mOptions.numberPoints * (mOptions.percentajeShowQ / 100))) {
             var msg = mOptions.msgs.msgReviewContents.replace('%s', mOptions.percentajeShowQ);
-            $eXeMapa.showMessageModal(instance, msg, 0, 0, .1);
+            $eXeMapa.showMessageModal(instance, msg, 0, 0, -1);
             return;
         }
         mOptions.questionaireStarted = true;
@@ -2351,7 +2351,8 @@ var $eXeMapa = {
         var mOptions = $eXeMapa.options[instance],
             solution = mOptions.tilteRect,
             correct = solution == answer,
-            message = $eXeMapa.updateScoreFind(correct, instance);
+            message = $eXeMapa.updateScoreFind(correct, instance),
+            num=mOptions.activeMap.active;
         $('#mapaFMessages-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         if (mOptions.activeMap.pts[mOptions.activeMap.active].type == 5) {
@@ -2366,7 +2367,13 @@ var $eXeMapa = {
                 $eXeMapa.showMessageDetail(instance, message, 2);
                 $eXeMapa.showPoint(mOptions.activeMap.active, instance);
             } else {
-                $eXeMapa.showMessageModal(instance, message, 2, 2, 1, -1);
+                //$eXeMapa.showMessageModal(instance, message, 2, 2, 1, -1);
+                var num=mOptions.activeMap.active
+                if(mOptions.activeMap.pts[num].type == 8){
+                    $eXeMapa.showPointLink(num,instance)
+                }else{
+                   $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 2, 2, -1);
+                }
                 setTimeout(function () {
                     if (mOptions.activeMap.pts.length - mOptions.hits - mOptions.errors <= 0) {
                         $eXeMapa.gameOver(instance);
