@@ -345,6 +345,7 @@ var $eXeMapa = {
         }
         mOptions.playerAudio = "";
         mOptions.loadingURL = false;
+        mOptions.topBBTop=false;
         mOptions.autoShow = typeof mOptions.autoShow == "undefinide" ? false : mOptions.autoShow;
         return mOptions;
     },
@@ -2352,7 +2353,7 @@ var $eXeMapa = {
             solution = mOptions.tilteRect,
             correct = solution == answer,
             message = $eXeMapa.updateScoreFind(correct, instance),
-            num=mOptions.activeMap.active;
+            num = mOptions.activeMap.active;
         $('#mapaFMessages-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         if (mOptions.activeMap.pts[mOptions.activeMap.active].type == 5) {
@@ -2368,11 +2369,11 @@ var $eXeMapa = {
                 $eXeMapa.showPoint(mOptions.activeMap.active, instance);
             } else {
                 //$eXeMapa.showMessageModal(instance, message, 2, 2, 1, -1);
-                var num=mOptions.activeMap.active
-                if(mOptions.activeMap.pts[num].type == 8){
-                    $eXeMapa.showPointLink(num,instance)
-                }else{
-                   $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 2, 2, -1);
+                var num = mOptions.activeMap.active
+                if (mOptions.activeMap.pts[num].type == 8) {
+                    $eXeMapa.showPointLink(num, instance)
+                } else {
+                    $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 2, 2, -1);
                 }
                 setTimeout(function () {
                     if (mOptions.activeMap.pts.length - mOptions.hits - mOptions.errors <= 0) {
@@ -2422,17 +2423,17 @@ var $eXeMapa = {
         $('#mapaLinkCloseDetail-' + instance).hide();
 
         if (correct) {
-            if (mOptions.activeMap.pts[num].type < 4 || mOptions.activeMap.pts[num].type == 6 ) {
+            if (mOptions.activeMap.pts[num].type < 4 || mOptions.activeMap.pts[num].type == 6) {
                 $eXeMapa.showMessageDetail(instance, message, 2);
                 $eXeMapa.showPoint(num, instance);
             } else if (mOptions.activeMap.pts[num].type == 7) {
                 $eXeMapa.showToolTip(num, instance)
             } else {
-               
-                if(mOptions.activeMap.pts[num].type == 8){
-                    $eXeMapa.showPointLink(num,instance)
-                }else{
-                   $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 1, 2, num);
+
+                if (mOptions.activeMap.pts[num].type == 8) {
+                    $eXeMapa.showPointLink(num, instance)
+                } else {
+                    $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 1, 2, num);
                 }
                 setTimeout(function () {
                     if (mOptions.evaluation == 2 || mOptions.evaluation == 3) {

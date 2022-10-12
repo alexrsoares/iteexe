@@ -394,7 +394,7 @@ img.MQP-ImageMain {
 .MQP-LinkSlideLeft {
 	position: absolute;
 	display: block;
-	background-image: url(mapaslideleft.png);
+	background-image: url(mapaslideleft.svg);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -407,7 +407,7 @@ img.MQP-ImageMain {
 .MQP-LinkSlideRight {
 	position: absolute;
 	display: block;
-	background-image: url(mapaslidelrigh.png);
+	background-image: url(mapaslidelrigh.svg);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -422,7 +422,7 @@ img.MQP-ImageMain {
 .MQP-LinkAudio {
 	position: absolute;
 	display: block;
-	background-image: url(mapam2.svg);
+	background-image: url(exeplaysound.svg);
 	background-size: 50% 50%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -867,7 +867,7 @@ img.MQP-ImageMain {
 }
 
 .MQP-AcceptButton {
-	background: url(exequextreply.png) no-repeat;
+	background: url(exequextreply.svg) no-repeat;
 	background-size: 100% 100%;
 	cursor: pointer;
 	height: 1.7rem;
@@ -877,7 +877,7 @@ img.MQP-ImageMain {
 }
 
 .MQP-CancelButton {
-	background: url(exequextrerrors.png) no-repeat;
+	background: url(exequextrerrors.svg) no-repeat;
 	background-size: 100% 100%;
 	cursor: pointer;
 	height: 1.7rem;
@@ -922,7 +922,7 @@ img.MQP-ImageMain {
 }
 .MQP-MainContainer .MQP-IconPlayIdentify {
 	background-size: 100% 100%;
-	background-image: url(mapam2.svg);
+	background-image: url(exeplaysound.svg);
 	background-size: 100% 100%;
 	height: 1.3em;
 	margin: 0;
@@ -1098,32 +1098,32 @@ img.MQP-ImageMain {
 }
 
 .MQP-MainContainer .exeQuextIcons-Submit {
-	background: url(exequextreply.png) no-repeat;
+	background: url(exequextreply.svg) no-repeat;
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Minimize {
-	background-image: url(exequextmin.png);
+	background-image: url(exequextmin.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Hit {
-	background-image: url(exequexthits.png);
+	background-image: url(exequexthits.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Error {
-	background-image: url(exequextrerrors.png);
+	background-image: url(exequextrerrors.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Score {
-	background-image: url(exequextscore.png);
+	background-image: url(exequextscore.svg);
 	background-size: 100% 100%;
 }
 
 .MQP-MainContainer .exeQuextIcons-Number {
-	background-image: url(exequextnumber.png);
+	background-image: url(exequextnumber.svg);
 	background-size: 100% 100%;
 }
 
