@@ -97,8 +97,9 @@ var $eXeMapa = {
                 $imagesMap = $('.mapa-LinkImagesMapas', this),
                 $imagesSlides = $('.mapa-LinkImagesSlides', this),
                 $audiosIdentifyLink = $('.mapa-LinkAudiosIdentify', this),
-                $urlmap = $('.mapa-ImageMap', this).eq(0).attr('href'),
-                mOption = $eXeMapa.loadDataGame(dl, $imagesLink, $textLink, $audiosLink, $imagesMap, $audiosIdentifyLink, $imagesSlides, $urlmap, $toolTips);
+                $urlmap = $('.mapa-ImageMap', this).eq(0).attr('src');
+            $urlmap = typeof $urlmap == "undefined" ? $('.mapa-ImageMap', this).eq(0).attr('href') : $urlmap;
+            var mOption = $eXeMapa.loadDataGame(dl, $imagesLink, $textLink, $audiosLink, $imagesMap, $audiosIdentifyLink, $imagesSlides, $urlmap, $toolTips);
             $eXeMapa.options.push(mOption);
             var mapa = $eXeMapa.createInterfaceMapa(i);
             dl.before(mapa).remove();
@@ -115,7 +116,6 @@ var $eXeMapa = {
             }
         });
         if ($eXeMapa.hasLATEX && typeof (MathJax) == "undefined") {
-
             $eXeMapa.loadMathJax();
         }
 
@@ -345,7 +345,7 @@ var $eXeMapa = {
         }
         mOptions.playerAudio = "";
         mOptions.loadingURL = false;
-        mOptions.topBBTop=false;
+        mOptions.topBBTop = false;
         mOptions.autoShow = typeof mOptions.autoShow == "undefinide" ? false : mOptions.autoShow;
         return mOptions;
     },
@@ -441,27 +441,42 @@ var $eXeMapa = {
     },
     setImageSlide: function (s, $images) {
         $images.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof s.id != "undefined" && typeof id != "undefined" && s.id == id) {
-                s.url = $(this).attr('href');
+                s.url = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
     },
     setImage: function (p, $images) {
         $images.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.url = $(this).attr('href');
+                p.url = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
     },
     setAudio: function (p, $audios) {
         $audios.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.audio = $(this).attr('href');
+                p.audio = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
@@ -488,19 +503,29 @@ var $eXeMapa = {
     },
     setImgMap: function (p, $imgmap) {
         $imgmap.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.map.url = $(this).attr('href');
+                p.map.url = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
-
     },
     setAudioIdentefy: function (p, $audios) {
         $audios.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.question_audio = $(this).attr('href');
+                p.question_audio = type ? $(this).attr('src') : $(this).attr('href');
+
                 return;
             }
         });

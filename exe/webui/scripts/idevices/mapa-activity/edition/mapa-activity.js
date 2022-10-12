@@ -939,7 +939,8 @@ var $exeDevice = {
                 $audiosIdentifyLink = $('.mapa-LinkAudiosIdentify', wrapper),
                 $imagesSlides = $('.mapa-LinkImagesSlides', wrapper),
                 $tooltipLinks = $('.mapa-LinkToolTipPoints', wrapper);
-            dataGame.url = $('.mapa-ImageMap', wrapper).eq(0).attr('href');
+            dataGame.url = $('.mapa-ImageMap', wrapper).eq(0).attr('src');
+            dataGame.url = typeof dataGame.url == "undefined" ? $('.mapa-ImageMap', wrapper).eq(0).attr('href') : dataGame.url;
             $exeDevice.setMedias(dataGame.points, $imagesLink, $textLink, $audiosLink, $imagesMap, $audiosIdentifyLink, $imagesSlides, $tooltipLinks)
             $exeDevice.updateFieldGame(dataGame);
             var instructions = $(".mapa-instructions", wrapper);
@@ -979,7 +980,7 @@ var $exeDevice = {
             if (p.type != 5) {
                 if (p.type == 0 && typeof p.url != "undefined" && !p.url.indexOf('http') == 0 && p.url.length > 4) {
                     $exeDevice.setImage(p, $images);
-                } else if (p.type == 2 && typeof p.eText != "undefined" && p.eText.trim().length > 0) {
+                } else if (p.type == 2 && typeof p.eText != "undefined") {
                     $exeDevice.setText(p, $texts);
                 } else if (p.type == 7 && typeof p.toolTip != "undefined") {
                     $exeDevice.setToolTip(p, $toolTips);
@@ -1014,36 +1015,56 @@ var $exeDevice = {
 
     setImageSlide: function (s, $images) {
         $images.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof s.id != "undefined" && typeof id != "undefined" && s.id == id) {
-                s.url = $(this).attr('href');
+                s.url = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
     },
     setImage: function (p, $images) {
         $images.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.url = $(this).attr('href');
+                p.url = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
     },
     setAudio: function (p, $audios) {
         $audios.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.audio = $(this).attr('href');
+                p.audio = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
     },
     setAudioIdentefy: function (p, $audios) {
         $audios.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.question_audio = $(this).attr('href');
+                p.question_audio = type ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
@@ -1062,16 +1083,21 @@ var $exeDevice = {
         $tt.each(function () {
             var id = $(this).data('id');
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.toolTip = $(this).html();
+                p.toolTip = $(this).html();;
                 return;
             }
         });
     },
     setImgMap: function (p, $imgmap) {
         $imgmap.each(function () {
-            var id = $(this).text();
+            var id = $(this).data('id'),
+                type = true;
+            if (typeof id == "undefined") {
+                type = false;
+                id = $(this).text();;
+            }
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.map.url = $(this).attr('href');
+                p.map.url ? $(this).attr('src') : $(this).attr('href');
                 return;
             }
         });
@@ -1116,15 +1142,22 @@ var $exeDevice = {
         html += '<div class="mapa-version js-hidden">' + $exeDevice.version + '</div>';
         html += divContent;
         html += '<div class="mapa-DataGame js-hidden">' + json + '</div>';
-        html += '<a href="' + dataGame.url + '" class="js-hidden mapa-ImageMap" />' + dataGame.url + '</a>';
+        html += '<img src="' + dataGame.url + '" class="js-hidden mapa-ImageMap" data-id="0" />';
         html += medias;
         var textAfter = tinyMCE.get('eXeIdeviceTextAfter').getContent();
         if (textAfter != "") {
-            html += '<div class="mapa-extra-content">' + textAfter + '</div>';
+            html += '<div class="mapa-extra-content">' + $exeDevice.clearTags(textAfter) + '</div>';
         }
         html += '<div class="mapa-bns js-hidden">' + $exeDevice.msgs.msgNoSuportBrowser + '</div>';
         html += '</div>';
         return html;
+    },
+    clearTags(text) {
+        return text;
+        var txt = text.replace(/\\"resources\//g, "'");
+        txt = txt.replace(/\\"preview\//g, "'");
+        txt = txt.replace(/\\"/g, "'");
+
     },
     saveMedias: function (pts) {
         var medias = {
@@ -1139,27 +1172,27 @@ var $exeDevice = {
             var p = pts[i];
             if (p.type != 5) {
                 if (p.type == 0 && typeof p.url != "undefined" && !p.url.indexOf('http') == 0 && p.url.length > 4) {
-                    medias.images += '<a href="' + p.url + '" class="js-hidden mapa-LinkImagesPoints">' + p.id + '</a>';
-                } else if (p.type == 2 && typeof p.eText != "undefined" && p.eText.length > 0) {
-                    medias.texts += '<div class="js-hidden mapa-LinkTextsPoints" data-id="' + p.id + '">' + p.eText + '</div>';
-                } else if (p.type == 7 && typeof p.toolTip != "undefined" && p.toolTip.length > 0) {
-                    medias.tooltips += '<div class="js-hidden mapa-LinkToolTipPoints" data-id="' + p.id + '">' + p.toolTip + '</div>';
+                    medias.images += '<img src="' + p.url + '" class="js-hidden mapa-LinkImagesPoints" data-id="' + p.id + '">';
+                } else if (p.type == 2 && typeof p.eText != "undefined") {
+                    medias.texts += '<div class="js-hidden mapa-LinkTextsPoints" data-id="' + p.id + '">' + $exeDevice.clearTags(p.eText) + '</div>';
+                } else if (p.type == 7 && typeof p.toolTip != "undefined" && p.toolTip) {
+                    medias.tooltips += '<div class="js-hidden mapa-LinkToolTipPoints" data-id="' + p.id + '">' + $exeDevice.clearTags(p.toolTip) + '</div>';
                 }
                 if (p.type != 1 && typeof p.audio != "undefined" && !p.audio.indexOf('http') == 0 && p.audio.length > 4) {
-                    medias.audios += '<a href="' + p.audio + '" class="js-hidden mapa-LinkAudiosPoints">' + p.id + '</a>';
+                    medias.audios += '<audio src="' + p.audio + '" preload="none" class="js-hidden mapa-LinkAudiosPoints" data-id="' + p.id + '"></audio>';
                 }
                 if (p.question_audio != "undefined" && !p.question_audio.indexOf('http') == 0 && p.question_audio.length > 4) {
-                    medias.audios += '<a href="' + p.question_audio + '" class="js-hidden mapa-LinkAudiosIdentify">' + p.id + '</a>';
+                    medias.audios += '<audio src="' + p.question_audio + '" preload="none" class="js-hidden mapa-LinkAudiosIdentify" data-id="' + p.id + '"></audio>';
                 }
                 if (p.type == 6 && typeof p.slides != "undefined" && p.slides.length > 0) {
                     for (var j = 0; j < p.slides.length; j++) {
                         var s = p.slides[j];
-                        medias.slides += '<a href="' + s.url + '" class="js-hidden mapa-LinkImagesSlides">' + s.id + '</a>';
+                        medias.images += '<img src="' + p.url + '" class=" js-hidden mapa-LinkImagesSlides" data-id="' + s.id + '">';
                     }
                 }
 
             } else {
-                medias.maps += '<a href="' + p.map.url + '" class="js-hidden mapa-LinkImagesMapas">' + p.id + '</a>';
+                medias.maps += '<img src="' + p.map.url + '" class="js-hidden mapa-LinkImagesMapas" data-id="' + p.id + '">';
                 var rdata = $exeDevice.saveMedias(p.map.pts);
                 medias.images += rdata.images;
                 medias.audios += rdata.audios;
@@ -1211,7 +1244,7 @@ var $exeDevice = {
         p.iconType = parseInt($('#mapaIconType').children("option:selected").val());
         p.question = $('#mapaIdentify').val();
         p.question_audio = $('#mapaURLAudioIdentify').val();
-        p.link = $('#mapaLink').val(); 
+        p.link = $('#mapaLink').val();
 
         if (tinyMCE.get('mapaToolTip')) {
             p.toolTip = tinyMCE.get('mapaToolTip').getContent();
@@ -1228,7 +1261,7 @@ var $exeDevice = {
         if (p.fVideo <= p.iVideo) p.fVideo = 36000;
         $exeDevice.stopSound();
         $exeDevice.stopVideo();
-  
+
         if (url.length < 4) {
             $exeDevice.showMessage($exeDevice.msgs.msgEURLValid);
             return false;
@@ -1306,7 +1339,7 @@ var $exeDevice = {
             message = $exeDevice.msgs.msgWriteText;
         } else if (p.type == 7 && p.toolTip.length == 0) {
             message = $exeDevice.msgs.msgWriteText;
-        } else if (p.type == 8 && p.link.length <4) {
+        } else if (p.type == 8 && p.link.length < 4) {
             message = $exeDevice.msgs.msgWriteLink;
         }
         if (message.length > 0) {
@@ -1455,7 +1488,7 @@ var $exeDevice = {
             } else if ((mpoint.type == 1) && !($exeDevice.getIDYoutube(mpoint.video))) {
                 $exeDevice.showMessage($exeDevice.msgs.msgECompleteURLYoutube);
                 return false;
-            } else if ((mpoint.type == 2) && (mpoint.eText.trim().length == 0)) {
+            } else if ((mpoint.type == 2) && (mpoint.eText.length == 0)) {
                 $exeDevice.showMessage($exeDevice.msgs.msgWriteText);
                 return false;
             } else if (mpoint.type == 5) {
@@ -1477,7 +1510,7 @@ var $exeDevice = {
                     } else if ((vpp.type == 1) && !($exeDevice.getIDYoutube(vpp.video))) {
                         $exeDevice.showMessage($exeDevice.msgs.msgECompleteURLYoutube);
                         return false;
-                    } else if ((vpp.type == 2) && (vpp.eText.trim().length == 0)) {
+                    } else if ((vpp.type == 2) && (vpp.eText.length == 0)) {
                         $exeDevice.showMessage($exeDevice.msgs.msgWriteText);
                         return false;
                     } else if ((vpp.type == 3) && (vpp.audio.trim().length == 0)) {
