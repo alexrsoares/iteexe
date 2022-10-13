@@ -108,7 +108,8 @@ var $exeDevice = {
         "msgCompleteTest": _("You can do the test."),
         "msgPlayStart": _("Click here to start"),
         "msgSubtitles": _("Subtitles"),
-        "msgSelectSubtitles": _("Select a subtitle file. Supported formats:")
+        "msgSelectSubtitles": _("Select a subtitle file. Supported formats:"),
+        "msgNumQuestions": _("Number of questions")
     },
     init: function () {
         this.ci18n.msgTryAgain = this.ci18n.msgTryAgain.replace("&percnt;", "%");
@@ -362,7 +363,6 @@ var $exeDevice = {
             menubar: false,
             statusbar: false,
             convert_urls: false,
-            content_css: "css/tinymce.css",
             file_browser_callback: function (field_name, url, type, win) {
                 exe_tinymce.chooseImage(field_name, url, type, win);
             },
@@ -954,7 +954,7 @@ var $exeDevice = {
             }
             var textAfter = $(".mapa-extra-content", wrapper);
             if (textAfter.length == 1) {
-                textAfter = textAfter.html() || ''
+                textAfter = $exeDevice.clearTags(textAfter.html()) || ''
                 if (tinyMCE.get('eXeIdeviceTextAfter')) {
                     tinyMCE.get('eXeIdeviceTextAfter').setContent(textAfter);
                 } else {
@@ -1073,7 +1073,7 @@ var $exeDevice = {
         $texts.each(function () {
             var id = $(this).data('id');
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.eText = $(this).html();
+                p.eText = $exeDevice.clearTags($(this).html());
                 return;
             }
         });
@@ -1083,7 +1083,7 @@ var $exeDevice = {
         $tt.each(function () {
             var id = $(this).data('id');
             if (typeof p.id != "undefined" && typeof id != "undefined" && p.id == id) {
-                p.toolTip = $(this).html();;
+                p.toolTip = $exeDevice.clearTags($(this).html());
                 return;
             }
         });
@@ -1132,12 +1132,14 @@ var $exeDevice = {
             if (fVal != "") i18n[i] = fVal;
         }
         dataGame.msgs = i18n;
-        var json = JSON.stringify(dataGame),
-            divContent = "";
-        if (dataGame.instructions != "") divContent = '<div class="mapa-instructions gameQP-instructions">' + dataGame.instructions + '</div>';
-
-        var medias = $exeDevice.saveMedias(dataGame.points);
+        var divContent = "";
+        if (dataGame.instructions != "") divContent = '<div class="mapa-instructions gameQP-instructions">' + $exeDevice.clearTags(dataGame.instructions) + '</div>';
+        dataGame.textAfter = ''
+        dataGame.instructions = '';
+        var medias = $exeDevice.saveMedias(dataGame.points),
+            json = JSON.stringify(dataGame);
         medias = medias.maps + medias.images + medias.audios + medias.texts + medias.slides + medias.tooltips;
+
         var html = '<div class="mapa-IDevice">';
         html += '<div class="mapa-version js-hidden">' + $exeDevice.version + '</div>';
         html += divContent;
@@ -1153,10 +1155,8 @@ var $exeDevice = {
         return html;
     },
     clearTags(text) {
-        return text;
-        var txt = text.replace(/\\"resources\//g, "'");
-        txt = txt.replace(/\\"preview\//g, "'");
-        txt = txt.replace(/\\"/g, "'");
+        var txt = text.replace(/\\"/g, '"');
+        return txt
 
     },
     saveMedias: function (pts) {
@@ -1168,6 +1168,7 @@ var $exeDevice = {
             'slides': '',
             'tooltips': ''
         }
+ 
         for (var i = 0; i < pts.length; i++) {
             var p = pts[i];
             if (p.type != 5) {
@@ -1175,8 +1176,10 @@ var $exeDevice = {
                     medias.images += '<img src="' + p.url + '" class="js-hidden mapa-LinkImagesPoints" data-id="' + p.id + '">';
                 } else if (p.type == 2 && typeof p.eText != "undefined") {
                     medias.texts += '<div class="js-hidden mapa-LinkTextsPoints" data-id="' + p.id + '">' + $exeDevice.clearTags(p.eText) + '</div>';
+                    p.eText = ''
                 } else if (p.type == 7 && typeof p.toolTip != "undefined" && p.toolTip) {
                     medias.tooltips += '<div class="js-hidden mapa-LinkToolTipPoints" data-id="' + p.id + '">' + $exeDevice.clearTags(p.toolTip) + '</div>';
+                    p.toolTip = '';
                 }
                 if (p.type != 1 && typeof p.audio != "undefined" && !p.audio.indexOf('http') == 0 && p.audio.length > 4) {
                     medias.audios += '<audio src="' + p.audio + '" preload="none" class="js-hidden mapa-LinkAudiosPoints" data-id="' + p.id + '"></audio>';
@@ -1187,7 +1190,7 @@ var $exeDevice = {
                 if (p.type == 6 && typeof p.slides != "undefined" && p.slides.length > 0) {
                     for (var j = 0; j < p.slides.length; j++) {
                         var s = p.slides[j];
-                        medias.images += '<img src="' + p.url + '" class=" js-hidden mapa-LinkImagesSlides" data-id="' + s.id + '">';
+                        medias.slides += '<img src="' + s.url + '" class=" js-hidden mapa-LinkImagesSlides" data-id="' + s.id + '">';
                     }
                 }
 
@@ -1203,6 +1206,7 @@ var $exeDevice = {
             }
 
         }
+
         return medias
     },
     validateDataLevel: function () {

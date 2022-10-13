@@ -80,6 +80,10 @@
 	text-align: center;
 }
 
+.MQP-ToolBar p {
+    font-size: 1.2em;
+}
+
 .MQP-MessageDetail {
 	width: 100%;
 	text-align: center;
@@ -404,8 +408,8 @@ img.MQP-ImageMain {
 	left: 0;
 	margin: auto;
 	top: 40%;
-	width: 1.5em;
-	height: 4em;
+	width: 2em;
+	height: 5em;
 }
 .MQP-LinkSlideRight {
 	position: absolute;
@@ -416,8 +420,8 @@ img.MQP-ImageMain {
 	background-position: center center;
 	right: 0;
 	margin: auto;
-	width: 1.5em;
-	height: 4em;
+	width: 2em;
+	height: 5em;
 	top: 40%;
 }
 
@@ -1421,11 +1425,7 @@ div:fullscreen .MQP-LinkCloseDetail{
 		margin-bottom: 0.1em;
 		font-size: 0.9em;
 	}
-	.MQP-MainContainer .MQP-TitlePoint {
-		font-size: 1em;
-		padding: 0.2em;
-		margin-bottom: .2em;
-	}
+	
 }
 
 @media screen and (max-width:550px) {
@@ -1535,6 +1535,24 @@ div:fullscreen .MQP-LinkCloseDetail{
 	.MQP-ToolTip {
 		width: 60%;
 		min-height: 150px;
+	}
+	.MQP-ToolBar p {
+		font-size: 1em;
+	}
+	.MQP-Footer {
+		font-size: 0.8em;
+		
+	}
+	.MQP-TitlePoint {
+		font-size: 0.9em;
+		padding: 0.2em;
+		margin-bottom: .2em;
+	}
+	.mapa-extra-content{
+		font-size: 0.9em;
+	}
+	.MQP-MessageModal{
+		font-size: 0.9em;
 	}
 }
 
