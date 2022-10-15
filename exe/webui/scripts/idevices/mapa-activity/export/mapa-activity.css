@@ -190,7 +190,7 @@
 	width: 80%;
 	max-width: 90%;
 	padding: 0.8em;
-	border-radius: 0.3em;
+	border-radius: 0.4em;
 	background-color: #ffffff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
 	top: 0;
@@ -237,7 +237,25 @@
 	top: 0;
 	left: 0;
 	z-index: 3101;
-	border-radius: 0.3em;
+	border-radius: 0.4em;
+}
+
+.MQP-DetailsSound {
+	width: 300px;
+	max-width: 90%;
+	min-height: 80px;
+	background-color: white;
+	border: 1px solid #ccc;
+	position: absolute;
+	z-index: 10;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	padding: 0.5em 0.5em;
+	font-size: 1em;
+	top: 0;
+	left: 0;
+	z-index: 3101;
+	border-radius: 0.4em;
+
 }
 .MQP-ToolTipTitle {
 	text-align: center;
@@ -255,6 +273,20 @@
 	height: 20px;
 	z-index:100;
 	display :block;
+}
+
+.MQP-MainContainer a.MQP-LinkDetailClose {
+	position: absolute;
+	top: 7px;
+	right: 3px;
+	width: 30px;
+	height: 30px;
+	z-index:100;
+	display :block;
+}
+
+.MQP-MainContainer a.MQP-LinkDetailClose  .MQP-IconsToolBar{
+	margin:0
 }
 .MQP-MainContainer .MQP-ToolTipClose .MQP-IconsToolBar {
     background-size: 100% 100%;
@@ -283,6 +315,7 @@
 	background-color: #ffffff;
 }
 
+
 .MQP-AuthorPoint {
 	width: 100%;
 	text-align: center;
@@ -298,7 +331,7 @@
 	padding: 0.5em;
 	width: 100%;
 	color: #071717;
-	border-radius: 0.3em;
+	border-radius: 0.4em;
 	background-color: #ffffff;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
@@ -307,6 +340,8 @@
 	max-height: 7em;
 	overflow-y: auto;
 }
+
+
 
 .MQP-Area {
 	position: absolute;
@@ -319,13 +354,24 @@
 }
 
 .MQP-MultimediaPoint {
-	border-radius: 0.6em;
+	border-radius: 0.4em;
 	margin: 0.5em auto;
 	width: 100%;
 	max-width: 1024px;
 	overflow: hidden;
 	position: relative;
 	background-color: #ffffff;
+}
+
+.MQP-MultimediaPointSound {
+	width: 80%;
+	height: 150px;
+	margin:auto;
+	overflow: hidden;
+	position: relative;
+	background-color: #ffffff;
+	border-radius: 0.4em;
+	margin: 0.5em auto;
 }
 
 img.MQP-ImageMain {
@@ -336,7 +382,7 @@ img.MQP-ImageMain {
 
 .MQP-Images {
 	border: 0;
-	border-radius: 0.6em;
+	border-radius: 0.4em;
 	height: 100%;
 	left: 0;
 	position: absolute;
@@ -378,7 +424,7 @@ img.MQP-ImageMain {
 
 .MQP-Images {
 	border: 0;
-	border-radius: 0.6em;
+	border-radius: 0.4em;
 	height: 100%;
 	left: 0;
 	position: absolute;
@@ -426,7 +472,7 @@ img.MQP-ImageMain {
 }
 
 
-.MQP-LinkAudio {
+.MQP-LinkAudioS {
 	position: absolute;
 	display: block;
 	background-image: url(exeplaysound.svg);
@@ -440,6 +486,14 @@ img.MQP-ImageMain {
 	top: 0;
 	width: 100%;
 	height: 100%
+}
+.MQP-LinkSound{
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Author */
@@ -507,7 +561,7 @@ img.MQP-ImageMain {
 	min-height: 200px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
 	padding: 1em;
-	border-radius: 0.6em;
+	border-radius: 0.4em;
 	max-width: 600px;
 	margin-top: 4em;
 	display: none;
@@ -764,7 +818,7 @@ img.MQP-ImageMain {
 .MQP-DivFeedBack {
 	align-items: center;
 	background-color: rgba(232, 232, 232, 0.8);
-	border-radius: .6em;
+	border-radius: .4em;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -785,7 +839,7 @@ img.MQP-ImageMain {
 	-webkit-box-shadow: 0 10px 6px -6px #999999;
 	background-color: #fff;
 	border: 1px solid #999;
-	border-radius: .6em;
+	border-radius: .4em;
 	box-shadow: 0 10px 6px -6px #999;
 	display: none;
 	margin-bottom: 1em;
@@ -825,7 +879,7 @@ img.MQP-ImageMain {
 	width: 80%;
 	max-width: 90%;
 	padding: 0.8em;
-	border-radius: 0.3em;
+	border-radius: 0.4em;
 	background-color: #ffffff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
 	top: 0;
@@ -836,12 +890,12 @@ img.MQP-ImageMain {
 }
 
 .MQP-MessageModal {
-	border-radius: 0.8em;
+	border-radius: 0.4em;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
 	width: 65%;
 	max-width: 500px;
 	min-width: 250px;
-	padding: 1em;
+	padding: 0.3em;
 	background-color: white;
 	top: 0;
 	left:0;
@@ -942,28 +996,33 @@ img.MQP-ImageMain {
 	padding: 0;
 }
 
+.MQP-FMessageInfo{
+	position: relative;
+}
+
 .MQP-MessageGOScore {
 	width: 80%;
 	height: 100%;
-	border-radius: 0.8em;
+	border-radius: 0.4em;
 }
+
 
 .MQP-MessageGOContent {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: 100%;
-	border-radius: 0.8em;
-	padding: 1em;
+	border-radius: 0.4em;
+	padding: 0.7em;
 }
 
 .MQP-MessageGOScoreData {
-	border-radius: 0.8em;
+	border-radius: 0.4em;
 	width: 50%
 }
 
 .MQP-MessageMoScoreData {
-	border-radius: 0.8em;
+	border-radius: 0.4em;
 	width: 100%
 }
 
@@ -996,7 +1055,9 @@ img.MQP-ImageMain {
 	font-size: 1.1em;
 	height: 1.5em;
 }
-
+.MQP-FOver{
+	padding: 0.6em;
+}
 .MQP-Hide {
 	display: none;
 }
@@ -1330,7 +1391,7 @@ div:fullscreen .MQP-LinkCloseDetail{
 	align-items: flex-start;
 	flex-wrap: wrap;
 	max-height: 300px;
-	border-radius: 0.8em;
+	border-radius: 0.4em;
 	max-width: 900px;
 }
 
@@ -1491,7 +1552,7 @@ div:fullscreen .MQP-LinkCloseDetail{
 	.MQP-MessageModal {
 		width: 90%;
 		padding: 0.6em;
-		border-radius: 0.6em;
+		border-radius: 0.4em;
 	}
 	.MQP-Detail {
 		margin-top: 0.3em;
@@ -1600,7 +1661,7 @@ div:fullscreen .MQP-LinkCloseDetail{
 		width: 140px;
 		height: 100px;
 		margin: 0.3em auto;
-		border-radius: 0.3em;
+		border-radius: 0.4em;
 	}
 	.MPQ-CursorRect {
 		width: 1.5em;

@@ -882,11 +882,12 @@ var $eXeMapa = {
                     <strong class="sr-av">' + msgs.msgReturnMap + ':</strong>\
                     <div class="MQP-IconsToolBar exeQuextIcons-CReturn MQP-Activo"></div>\
                 </a>\
+                ' + this.getDetailSound(instance) + '\
                 ' + this.getToolTip(instance) + '\
                 ' + this.getDetailMedia(instance) + '\
                 ' + this.getModalMessage(instance) + '\
-                ' + this.getDetailTest(instance) + '\
-              </div>\
+            </div>\
+            ' + this.getDetailTest(instance) + '\
             <div class="MQP-AuthorLicence" id="mapaAutorLicence-' + instance + '"></div>\
             <div class="MQP-Cubierta" id="mapaCubierta-' + instance + '">\
             ' + this.getTestGame(instance) + '\
@@ -950,7 +951,7 @@ var $eXeMapa = {
         var html = '',
             msgs = $eXeMapa.options[instance].msgs;
         html = '<div id="mapaFMessages-' + instance + '" class="MQP-MessageModal">\
-                    <div id="mapaFMessageInfo-' + instance + '">\
+                    <div  class="MQP-FMessageInfo" id="mapaFMessageInfo-' + instance + '">\
                         <div class="MQP-MessageGOScore">\
                             <div class="MQP-MessageGOContent">\
                                 <div class="MQP-MessageModalIcono"></div>\
@@ -958,12 +959,13 @@ var $eXeMapa = {
                                     <p id="mapaMessageInfoText-' + instance + '"></p>\
                                 </div>\
                             </div>\
-                            <div class="MQP-GOScoreButtons">\
-                                <a href="#" class="" id="mapaFMessageInfoAccept-' + instance + '" title="' + msgs.msgAccept + '">' + msgs.msgAccept + '</a>\
-                            </div>\
+                            <a href="#" class="MQP-ToolTipClose" id="mapaFMessageInfoAccept-' + instance + '" title="' + msgs.msgClose + '">\
+                                <strong class="sr-av">' + msgs.msgClose + ':</strong>\
+                                <div class="MQP-IconsToolBar exeQuextIcons-CWGame MQP-Activo"></div>\
+                            </a>\
                         </div>\
                     </div>\
-                    <div id="mapaFMessageOver-' + instance + '" class="MQP-MessageGOScore" >\
+                    <div id="mapaFMessageOver-' + instance + '" class="MQP-MessageGOScore MQP-FOver" >\
                         <div class="MQP-MessageGOContent">\
                             <div class="MQP-MessageModalIcono"></div>\
                             <div class="MQP-MessageGOScoreData">\
@@ -1087,10 +1089,6 @@ var $eXeMapa = {
                     <p class= "MQP-MessageDetail" id="mapaMessageDetail-' + instance + '"></p>\
                     <div class="MQP-Flex">\
                         <div class="MQP-TitlePoint" id="mapaTitlePoint-' + instance + '"></div>\
-                        <a href="#" class="MQP-LinkClose" id="mapaLinkClose1-' + instance + '" title="' + msgs.msgClose + '">\
-                            <strong class="sr-av">' + msgs.msgClose + ':</strong>\
-                            <div class="MQP-IconsToolBar exeQuextIcons-CWGame MQP-Activo"></div>\
-                        </a>\
                     </div>\
                     <div class="MQP-MultimediaPoint" id="mapaMultimediaPoint-' + instance + '">\
                         <img src="" class="MQP-Images" id="mapaImagePoint-' + instance + '"  alt="' + msgs.msgNoImage + '" />\
@@ -1103,6 +1101,30 @@ var $eXeMapa = {
                     <div class="MQP-EText" id="mapaTextPoint-' + instance + '"></div>\
                     <div class="MQP-AuthorPoint" id="mapaAuthorPoint-' + instance + '"></div>\
                     <div class="MQP-Footer" id="mapaFooterPoint-' + instance + '"></div>\
+                    <a href="#" class="MQP-LinkDetailClose" id="mapaLinkClose1-' + instance + '" title="' + msgs.msgClose + '">\
+                        <strong class="sr-av">' + msgs.msgClose + ':</strong>\
+                        <div class="MQP-IconsToolBar exeQuextIcons-CWGame MQP-Activo"></div>\
+                    </a>\
+                </div>';
+        return html;
+    },
+    getDetailSound: function (instance) {
+        var html = '',
+            path = $eXeMapa.idevicePath,
+            msgs = $eXeMapa.options[instance].msgs;
+        html = '<div class="MQP-DetailsSound" id="mapaFDetailsSound-' + instance + '">\
+                    <p class= "MQP-MessageDetail" id="mapaMessageDetailSound-' + instance + '"></p>\
+                    <div class="MQP-ToolTipTitle" id="mapaTitlePointSound-' + instance + '"></div>\
+                    <a href="#" class="MQP-ToolTipClose" id="mapaLinkCloseSound-' + instance + '" title="' + msgs.msgClose + '">\
+                        <strong class="sr-av">' + msgs.msgClose + ':</strong>\
+                        <div class="MQP-IconsToolBar exeQuextIcons-CWGame MQP-Activo"></div>\
+                    </a>\
+                    <div class="MQP-MultimediaPointSound" >\
+                      <a href="#" class="MQP-LinkSound MQP-Activo" id="mapaLinkAudio1-' + instance + '"   title="' + msgs.msgAudio + '">\
+                           <img src="' + path+ 'mapam2.svg" class="MQP-Images" alt="' + msgs.msgAudio + '" />\
+                      </a>\
+                    </div>\
+                    <div class="MQP-FooterSound" id="mapaFooterPointSound-' + instance + '"></div>\
                 </div>';
         return html;
     },
@@ -1110,8 +1132,7 @@ var $eXeMapa = {
         var html = '',
             path = $eXeMapa.idevicePath,
             msgs = $eXeMapa.options[instance].msgs;
-        html = '</div>\
-        <div class="MQP-Test" id="mapaTest-' + instance + '">\
+        html = '<div class="MQP-Test" id="mapaTest-' + instance + '">\
             <div class="MQP-MessageFindDiv" id="mapaMessageRect-' + instance + '">\
                 <a href="#" id="mapaPlayAudioRect-' + instance + '" title="' + msgs.msgAudio + '">\
                     <span class="sr-av">' + msgs.msgAudio + ':</span>\
@@ -1312,6 +1333,7 @@ var $eXeMapa = {
         $('#mapaGameMinimize-' + instance).hide();
         $('#mapaGameContainer-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaFTests-' + instance).hide();
         $('#mapaToolBarL-' + instance).hide();
         $('#mapaMessageMaximize-' + instance).text(mOptions.msgs.msgPlayStart);
@@ -1442,6 +1464,12 @@ var $eXeMapa = {
                 $eXeMapa.playSound(mOptions.activeMap.pts[mOptions.activeMap.active].audio, instance);
             }
         });
+        $('#mapaLinkAudio1-' + instance).on('click', function (e) {
+            e.preventDefault();
+            if (typeof mOptions.activeMap.pts[mOptions.activeMap.active].audio != "undefined" && mOptions.activeMap.pts[mOptions.activeMap.active].audio.length > 4) {
+                $eXeMapa.playSound(mOptions.activeMap.pts[mOptions.activeMap.active].audio, instance);
+            }
+        });
         $('#mapaPlayAudioIdenty-' + instance).on('click', function (e) {
             e.preventDefault();
             if (typeof mOptions.title.audio != "undefined" && mOptions.title.audio.length > 4) {
@@ -1536,6 +1564,10 @@ var $eXeMapa = {
             e.preventDefault();
             $eXeMapa.closePoint(instance);
         });
+        $('#mapaLinkCloseSound-' + instance).on('click', function (e) {
+            e.preventDefault();
+            $eXeMapa.closePoint(instance);
+        });
         $('#mapaLinkCloseOptions-' + instance).on('click', function (e) {
             e.preventDefault();
             $eXeMapa.closeOptions(instance);
@@ -1595,6 +1627,12 @@ var $eXeMapa = {
             }
         });
         $('#mapaFDetails-' + instance).on('mouseleave', function (e) {
+            e.preventDefault();
+            if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
+                $eXeMapa.closePoint(instance)
+            }
+        });
+        $('#mapaFDetailsSound-' + instance).on('mouseleave', function (e) {
             e.preventDefault();
             if (mOptions.autoShow && (mOptions.evaluation == 0 || mOptions.evaluation == 4)) {
                 $eXeMapa.closePoint(instance)
@@ -1751,6 +1789,12 @@ var $eXeMapa = {
         $eXeMapa.placePointInWindow($('#mapaFDetails-' + instance), num, instance)
 
     },
+    showPointSound: function (num, instance) {
+        var mOptions = $eXeMapa.options[instance],
+            q = mOptions.activeMap.pts[num];
+        $eXeMapa.placePointInWindow($('#mapaFDetailsSound-' + instance), num, instance)
+
+    },
     showPointVideo: function (num, instance) {
         var mOptions = $eXeMapa.options[instance];
         mOptions.waitPlayVideo = true;
@@ -1811,7 +1855,7 @@ var $eXeMapa = {
         } else {
             var $button = $multimedia.find("[data-number='" + num + "']").eq(0),
                 lMulti = isFulls ? 0 : parseInt($multimedia.css('marginLeft')),
-                lWindow = Math.round($button.position().left - (wWindow - $button.width()) / 2),
+                lWindow = Math.round($button.position().left - (wWindow - $button.innerWidth()) / 2),
                 tWindow = Math.round($button.position().top - (hWindow - $button.innerHeight()) / 2),
                 tWindow = tWindow < -tMulti ? -tMulti : tWindow;
 
@@ -1831,7 +1875,6 @@ var $eXeMapa = {
                 lWindow = lWindow - hsobra - 15;
             }
         }
-
         $window.css({
             'top': tWindow,
             'left': lWindow
@@ -1918,6 +1961,7 @@ var $eXeMapa = {
         var mOptions = $eXeMapa.options[instance];
         $('#mapaMessageFindP-' + instance).text('');
         $('#mapaMessageDetail-' + instance).hide();
+        $('#mapaMessageDetailsSound-' + instance).hide();
         $('#mapaMultimedia-' + instance).find('.MQP-Point').each(function () {
             $(this).attr('title', $(this).text());
         });
@@ -1942,6 +1986,7 @@ var $eXeMapa = {
         $eXeMapa.stopVideo(instance);
         $eXeMapa.stopVideoText(instance);
         $eXeMapa.stopSound(instance);
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         $('#mapaFMessages-' + instance).hide();
         $('#mapaTest-' + instance).hide();
@@ -2037,6 +2082,7 @@ var $eXeMapa = {
         mOptions.questionaireStarted = true;
         $eXeMapa.stopVideo(instance);
         $eXeMapa.showQuestion(mOptions.activeQuestion, instance);
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         $('#mapaFMessages-' + instance).hide();
         $('#mapaFTests-' + instance).show();
@@ -2051,6 +2097,7 @@ var $eXeMapa = {
             color = colors[color1];
         mOptions.showData = true;
         $('#mapaFDetails-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaFTests-' + instance).hide();
         $('#mapaFMessages-' + instance).show();
         $('#mapaFMessageInfo-' + instance).show();
@@ -2062,8 +2109,10 @@ var $eXeMapa = {
             'font-size': '1em'
         });
         $('#mapaFMessageInfo-' + instance).find('.MQP-GOScoreButtons').hide();
+        $('#mapaFMessageInfoAccept-' + instance).hide();
         if (type != 2) {
             $('#mapaFMessageInfo-' + instance).find('.MQP-GOScoreButtons').show();
+            $('#mapaFMessageInfoAccept-' + instance).show();
         }
         $eXeMapa.placePointInWindow($('#mapaFMessages-' + instance), num, instance)
 
@@ -2250,6 +2299,7 @@ var $eXeMapa = {
             msg = mOptions.msgs.msgScore8;
         }
         $('#mapaFDetails-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaFTests-' + instance).hide();
         $('#mapaFMessages-' + instance).fadeIn();
         $('#mapaFMessageInfo-' + instance).hide();
@@ -2381,6 +2431,7 @@ var $eXeMapa = {
             num = mOptions.activeMap.active;
         $('#mapaFMessages-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
         if (mOptions.activeMap.pts[mOptions.activeMap.active].type == 5) {
             mOptions.activeMap.pts[mOptions.activeMap.active].type = 0;
             mOptions.activeMap.pts[mOptions.activeMap.active].url = mOptions.activeMap.pts[mOptions.activeMap.active].map.url;
@@ -2398,7 +2449,7 @@ var $eXeMapa = {
                 if (mOptions.activeMap.pts[num].type == 8) {
                     $eXeMapa.showPointLink(num, instance)
                 } else {
-                    $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.title.title, 2, 2, -1);
+                    $eXeMapa.showMessageModal(instance, message + ': ' + mOptions.activeMap.pts[mOptions.activeMap.active].title, 2, 2, -1);
                 }
                 setTimeout(function () {
                     if (mOptions.activeMap.pts.length - mOptions.hits - mOptions.errors <= 0) {
@@ -2445,6 +2496,7 @@ var $eXeMapa = {
         $eXeMapa.showClue(instance);
         $('#mapaFMessages-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
         $('#mapaLinkCloseDetail-' + instance).hide();
 
         if (correct) {
@@ -2535,6 +2587,12 @@ var $eXeMapa = {
             'color': color
         });
         $('#mapaMessageDetail-' + instance).show();
+
+        $('#mapaMessageDetailsSound-' + instance).text(message);
+        $('#mapaMessageDetailsSound-' + instance).css({
+            'color': color
+        });
+        $('#mapaMessageDetailsSound-' + instance).show();
     },
     showPoint: function (i, instance) {
         var mOptions = $eXeMapa.options[instance],
@@ -2571,7 +2629,9 @@ var $eXeMapa = {
         $('#mapaMultimediaPoint-' + instance).show();
         $('#mapaAuthorPoint-' + instance).html(q.author);
         $('#mapaTitlePoint-' + instance).text(q.title);
+        $('#mapaTitlePointSound-' + instance).text(q.title);
         $('#mapaFooterPoint-' + instance).text(q.footer);
+        $('#mapaFooterPointSound-' + instance).text(q.footer);
         $('#mapaFooterPoint-' + instance).show();
         $('#mapaTextPoint-' + instance).text(q.title);
         if (q.footer.length > 0 && q.type == 2 && q.type == 7) {
@@ -2589,11 +2649,8 @@ var $eXeMapa = {
             $eXeMapa.showToolTip(i, instance);
         } else if (q.type == 8) {
             $eXeMapa.showPointLink(i, instance);
-
         } else if (q.type === 3) {
-            $('#mapaMultimediaPoint-' + instance).show();
-            $('#mapaLinkAudio-' + instance).show();
-            $eXeMapa.showPointImage(i, instance);
+            $eXeMapa.showPointSound(i, instance);
         } else if (q.type == 5) {
             $eXeMapa.showMapDetail(instance, i);
         } else if (q.type == 6) {
@@ -2625,6 +2682,7 @@ var $eXeMapa = {
         $('#mapaFTests-' + instance).hide();
         $('#mapaFDetails-' + instance).hide();
         $('#mapaToolTip-' + instance).hide();
+        $('#mapaFDetailsSound-' + instance).hide();
     },
     hideModalMessages: function (instance) {
         $('#mapaFMessages-' + instance).hide();
@@ -2680,7 +2738,7 @@ var $eXeMapa = {
             q = mOptions.activeMap.pts[mOptions.activeMap.active];
         $('#mapaFDetails-' + instance).hide();
         $('#mapaFMessages-' + instance).hide();
-
+        $('#mapaFDetailsSound-' + instance).hide();
         if (q.type == 2) {
             var $divText = $('#mapaTextPoint-' + instance).find('.mapa-LinkTextsPoints[data-id="' + q.id + '"]').eq(0)
             if ($divText.length == 1) {
