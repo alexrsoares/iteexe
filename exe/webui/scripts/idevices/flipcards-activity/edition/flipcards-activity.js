@@ -9,7 +9,7 @@
 var $exeDevice = {
     i18n: {
         category: _('Games'),
-        name: _('Cards')
+        name: _('Tarjetas giratorias')
     },
     msgs: {},
     active: 0,
@@ -59,7 +59,7 @@ var $exeDevice = {
         "msgAudio": _("Audio"),
         "msgPreviousCard": _("Previous"),
         "msgNextCard": _("Next"),
-        "msgNumQuestions": _("Número de cartas"),
+        "msgNumQuestions": _("Número de tarjetas"),
         "msgTrue": _("True"),
         "msgFalse": _("False"),
         "msgTryAgain": _("You need at least %s&percnt; of correct answers to get the information. Please try again."),
@@ -68,7 +68,7 @@ var $exeDevice = {
         "msgTrue2": _("Has fallado. No es la cara correcta"),
         "msgFalse1": _("Has acertado. No es la cara correcta"),
         "msgFalse2": _("Has fallado. Es la cara correcta"),
-        "mgsClickCard": _("Haz clic sobre la carta")
+        "mgsClickCard": _("Haz clic sobre la tarjeta")
 
     },
     init: function () {
@@ -90,17 +90,18 @@ var $exeDevice = {
         var msgs = this.msgs;
         msgs.msgESelectFile = _("The selected file does not contain a valid game");
         msgs.msgNoSuportBrowser = _("Your browser is not compatible with this tool.");
-        msgs.msgCompleteData = _("Debes indicar una imagen, un texto o/y un audio para cada para la cara anterior de cada carta");
-        msgs.msgCompleteDataBack = _("Debes indicar una imagen, un texto o/y un audio para cada para la cara posterior de cada carta");
-        msgs.msgEOneCard = _("Debe haber al menos una carta");
-        msgs.msgMaxCards = _("Número máximo de cartas: 200");
+        msgs.msgCompleteData = _("Debes indicar una imagen, un texto o/y un audio para cada para la cara anterior de cada tarjeta");
+        msgs.msgCompleteDataBack = _("Debes indicar una imagen, un texto o/y un audio para cada para la cara posterior de cada tarjeta");
+        msgs.msgEOneCard = _("Debe haber al menos una tarjeta");
+        msgs.msgMaxCards = _("Número máximo de tarjeta: 200");
     },
     createForm: function () {
         var path = $exeDevice.iDevicePath,
             html = '\
             <div id="gameIdeviceForm">\
+            <div class="exe-idevice-info">'+_("Cree actividades con tarjetas de memoria con imágenes, sonidos y/o textos enriquecidos.")+'<a href="https://youtu.be/P6BRFXLHiJk" hreflang="es" rel="lightbox">'+_("Aprenda a usar este iDevice.")+'</a></div>\
             <div class="exe-form-tab" title="' + _('General settings') + '">\
-            ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_('Haz clic sobre las cartas para descubrir que esconden')) + '\
+            ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_('Haz clic sobre las tarjetas para descubrir que esconden')) + '\
                 <fieldset class="exe-fieldset exe-fieldset-closed">\
                     <legend><a href="#">' + _('Options') + '</a></legend>\
                     <div>\
@@ -117,7 +118,7 @@ var $exeDevice = {
                             <label for="flipcardsENavigation"><input type="checkbox" id="flipcardsENavigation" checked>' + _('Navigation') + '</label>\
                         </p>\
                         <p>\
-                            <label for="flipcardsEPercentajeCards">%' + _('Cartas') + ':</label><input type="number" name="flipcardsEPercentajeCards" id="flipcardsEPercentajeCards" value="100" min="1" max="100" />\
+                            <label for="flipcardsEPercentajeCards">%' + _('Tarjeta') + ':</label><input type="number" name="flipcardsEPercentajeCards" id="flipcardsEPercentajeCards" value="100" min="1" max="100" />\
                             <span id="flipcardsENumeroPercentaje">1/1</span>\
                         </p>\
                         <p>\
@@ -126,7 +127,7 @@ var $exeDevice = {
                     </div>\
                 </fieldset>\
                 <fieldset class="exe-fieldset">\
-                <legend><a href="#">' + _('Cartas') + '</a></legend>\
+                <legend><a href="#">' + _('Tarjetas') + '</a></legend>\
                 <div class="FLCRDS-EPanel" id="flipcardsEPanel">\
                     <div class="FLCRDS-EPhrase" id="flipcardsEPhrase">\
                         <div class="FLCRDS-EDatosCarta FLCRDS-EFront" id="flipcardsEDatosCarta">\
@@ -219,8 +220,8 @@ var $exeDevice = {
                         </div>\
                     </div>\
                     <div class="FLCRDS-EReverseFacces">\
-                        <a href="#" id="flipcardsEReverseCard" title="' + _('Invertir carta') + '">' + _('Invertir carta') + '</a>\
-                        <a href="#" id="flipcardsEReverseFaces" title="' + _('Invertir todas las cartas') + '">' + _('Invertir todas las cartas') + '</a>\
+                        <a href="#" id="flipcardsEReverseCard" title="' + _('Invertir tarjeta') + '">' + _('Invertir tarjeta') + '</a>\
+                        <a href="#" id="flipcardsEReverseFaces" title="' + _('Invertir todas las tarjetas') + '">' + _('Invertir todas las tarjetas') + '</a>\
                     </div>\
                     <div class="FLCRDS-ENavigationButtons">\
                         <a href="#" id="flipcardsEAddC" class="FLCRDS-ENavigationButton" title="' + _("Add question") + '"><img src="' + path + 'quextIEAdd.png" alt="' + _("Add question") + '" class="FLCRDS-EButtonImage" /></a>\

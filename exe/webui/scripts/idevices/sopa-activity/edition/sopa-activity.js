@@ -96,6 +96,7 @@ var $exeDevice = {
         var path = $exeDevice.iDevicePath,
             html = '\
 			<div id="gameQEIdeviceForm">\
+                <div class="exe-idevice-info">'+_("Cree actividades o juegos tipo de sopa de letras en las que podrá utilizar definiciones con texto, imágenes y/o sonidos.")+' <a href="https://youtu.be/T9n2rGA-80g" hreflang="es" rel="lightbox">'+_("Aprenda a usar este iDevice.")+'</a></div>\
 				<div class="exe-form-tab" title="' + _('General settings') + '">\
                 ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_("Encuentra las palabras ocultas en nuestra sopa de letras.")) + '\
 					<fieldset class="exe-fieldset exe-fieldset-closed">\

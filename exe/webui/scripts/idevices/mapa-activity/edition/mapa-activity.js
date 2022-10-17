@@ -158,6 +158,7 @@ var $exeDevice = {
         var path = $exeDevice.iDevicePath,
             html = '\
             <div id="gameQEIdeviceForm">\
+            <div class="exe-idevice-info">'+_("Cree mapas de imágenes con zonas activas que podrán mostrar a su vez imágenes, vídeos, sonidos, textos enriquecidos o presentaciones.")+' <a href=https://youtu.be/xy1vBj9KGQk" hreflang="es" rel="lightbox">'+_("Aprenda a usar este iDevice.")+'</a></div>\
             <div class="exe-form-tab" title="' + _('General settings') + '">\
             ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_("Click on the active areas or image icons.")) + '\
                 <fieldset class="exe-fieldset exe-fieldset-closed">\
@@ -339,6 +340,7 @@ var $exeDevice = {
                 </fieldset>\
                  ' + $exeDevice.getCuestionario() + '\
                  ' + $exeDevice.getTextFieldset("after") + '\
+                 <div class="exe-idevice-info">'+_("Este juego puede presentar problemas de accesibilidad para algunas personas. Debe tenerlo en cuenta a la hora de elaborar el contenido y, si sus destinatarios lo requieren, proporcionar una alternativa accesible.")+'</div>\
             </div>\
             ' + $exeAuthoring.iDevice.gamification.itinerary.getTab() + '\
             ' + $exeAuthoring.iDevice.gamification.scorm.getTab() + '\

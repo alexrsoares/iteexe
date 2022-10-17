@@ -112,6 +112,7 @@ var $exeDevice = {
     createForm: function () {
         var html = '\
 			<div id="gameQEIdeviceForm">\
+                <div class="exe-idevice-info">'+_("Cree actividades con operaciones matemáticas básicas(suma, resta, multiplicación y/o división) aleatorias en las que los alumnos tendrán que averiguar el resultado, el operador o uno de los  operandos.")+' <a href="https://youtu.be/xCkJ6iv5NGw" hreflang="es" rel="lightbox">'+_("Aprenda a usar este iDevice")+'</a></div>\
 				<div class="exe-form-tab" title="' + _('General settings') + '">\
                 ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_("Realiza las siguientes operaciones matemáticas.")) + '\
 					<fieldset class="exe-fieldset">\

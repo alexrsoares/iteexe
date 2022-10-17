@@ -1424,24 +1424,10 @@ var $eXeFlipCards = {
 
     loadMathJax: function () {
         if (!window.MathJax) {
-            window.MathJax = {
-                tex: {
-                    inlineMath: [
-                        ['$', '$'],
-                        ["\\(", "\\)"]
-                    ],
-
-                    displayMath: [
-                        ['$$', '$$'],
-                        ["\\[", "\\]"]
-                    ],
-                    processEscapes: true,
-                    tags: 'ams'
-                },
-            };
+            window.MathJax = $exe.math.engineConfig;
         }
         var script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+        script.src = $exe.math.engine;
         script.async = true;
         document.head.appendChild(script);
     },
