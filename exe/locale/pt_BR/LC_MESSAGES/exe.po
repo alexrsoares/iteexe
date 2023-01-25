@@ -21,7 +21,7 @@ msgstr ""
 #: exe/application.py:239
 #, python-format
 msgid "An error has occurred when loading your config. A backup is saved at %s"
-msgstr ""
+msgstr "Ocorreu um erro ao carregar sua configuração. Backup feito em %s"
 
 #: exe/application.py:257
 #, python-format
@@ -29,6 +29,8 @@ msgid ""
 "An error has occurred when loading your Idevice Store. A backup is saved "
 "at %s"
 msgstr ""
+"Ocorreu um erro ao carregar sua Idevice Store. Um backup foi salvo "
+"em %s"
 
 #: exe/application.py:308
 #, python-format
@@ -79,10 +81,10 @@ msgid ""
 "buttons. The \n"
 "files, once loaded will be displayed beneath the Applet code field."
 msgstr ""
-"Adicionar todos os ficheiros necessários ao applet\n"
-"excepto o ficheiro .txt, carregar um de cada vez usando os botões "
-"Adicionar  e Upload. Os \n"
-"ficheiros, uma vez carregados aparecerão por baixo do campo de código "
+"Adicionar todos os arquivos necessários ao applet\n"
+"exceto o arquivo .txt, carregar um de cada vez usando os botões "
+"Adicionar e Upload. Os \n"
+"arquivos, uma vez carregados aparecerão por baixo do campo de código "
 "Applet."
 
 #: exe/engine/appletidevice.py:79
@@ -92,8 +94,8 @@ msgid ""
 "applet \n"
 "code field."
 msgstr ""
-"\"Encontre o ficheiro .txt (no ficheiro applet) \n"
-"e abra-o. Copie o conteúdo desse ficheiro <ctrl A, ctrl C> para o applet"
+"\"Encontre o arquivo .txt (no arquivo do applet) \n"
+"e abra-o. Copie o conteúdo desse arquivo <ctrl A, ctrl C> para o applet"
 " \n"
 "no campo de código."
 
@@ -106,18 +108,18 @@ msgid ""
 " \n"
 "you created in Geogebra.</p>"
 msgstr ""
-" <p>Se o objecto que está a adicionar foi criado \n"
-"por um dos programas deste menu pendente, por favor seleccione-o, \n"
-"depois adicione o ficheiro de dados /applet gerado pelo seu programa. "
+" <p>Se o objeto a adicionar foi criado por \n"
+"um dos programas deste menu pendente, por favor selecione-o, \n"
+"depois adicione o arquivo de dados /applet gerado pelo seu programa. "
 "</p>\n"
-"<p>ex. Para os applets Geogebra sleccionar geogebra, depois adicionar o "
-"ficheiro .ggb que \n"
+"<p>ex. Para os applets Geogebra selecionar geogebra, depois adicionar o "
+"arquivo .ggb que \n"
 "criou em Geogebra.</p>"
 
 #: exe/engine/appletidevice.py:187
 #, python-format
 msgid "file %s has no parentNode"
-msgstr "ficheiro %s não tem nó pai"
+msgstr "arquivo %s não tem nó pai"
 
 #: exe/engine/appletidevice.py:189 exe/engine/attachmentidevice.py:107
 #, python-format
@@ -126,7 +128,7 @@ msgstr "iDevice %s não tem pacote"
 
 #: exe/engine/appletidevice.py:440
 msgid "Sorry, this URL is unreachable"
-msgstr ""
+msgstr "Desculpe, URL não encontrada"
 
 #: exe/engine/appletidevice.py:525
 msgid ""
@@ -189,9 +191,9 @@ msgid ""
 "want to provide instructions on what you require the learner to do once "
 "the file is downloaded or how the material should be used."
 msgstr ""
-"Digitar o texto que pretende associar com o ficheiro descarregado. Pode "
-"indicar as instruções  que é necessário que o aluno faça depois de "
-"descarregar o ficheiro ou como o material deve ser usado."
+"Digite o texto que pretende associar ao arquivo descarregado. Pode "
+"indicar as instruções que o aluno deve seguir assim que "
+"descarregar o arquivo ou como o material deve ser usado."
 
 #: exe/engine/attachmentidevice.py:65 exe/engine/attachmentidevice.py:186
 msgid "Description:"
@@ -202,7 +204,7 @@ msgid ""
 "Click <strong>Select a file</strong>, browse to the file you want to "
 "attach and select it."
 msgstr ""
-"Clicar <strong>Seleccionar um ficheiro</strong>, procurar o ficheiro que "
+"Clicar <strong>Seleccionar um arquivo</strong>, procurar o arquivo que "
 "quer anexar e seleccione-o."
 
 #: exe/engine/attachmentidevice.py:72
@@ -264,8 +266,8 @@ msgid ""
 "Choose an optional image to be shown to the student on completion of this"
 " question"
 msgstr ""
-"Escolher uma imagem opcional para ser mostrada, ao aluno, quando realizar"
-" esta questão "
+"Escolher uma imagem opcional para ser mostrada ao aluno, quando realizar"
+" esta questão"
 
 #: exe/engine/casestudyidevice.py:200
 msgid "Case Study"
@@ -388,7 +390,7 @@ msgstr ""
 #: exe/engine/parasabermasfpdidevice.py:35
 #: exe/engine/recomendacionfpdidevice.py:35
 msgid "Enter the text that will appear on this iDevice"
-msgstr ""
+msgstr "Digite o texto que aparecerá neste iDevice"
 
 #: exe/engine/casopracticofpdidevice.py:38
 #: exe/engine/casopracticofpdidevice.py:136
@@ -447,11 +449,11 @@ msgstr "Título"
 
 #: exe/engine/clickinorderidevice.py:61
 msgid "Game Instructions"
-msgstr ""
+msgstr "Instruções de Jogo"
 
 #: exe/engine/clickinorderidevice.py:61
 msgid "Instructions to show in leading paragraph"
-msgstr ""
+msgstr "Instruções para exibir no parágrafo principal"
 
 #: exe/engine/clickinorderidevice.py:62
 msgid "Game Won Feedback Overlay"
@@ -459,11 +461,11 @@ msgstr ""
 
 #: exe/engine/clickinorderidevice.py:62
 msgid "Shown over when the game is won"
-msgstr ""
+msgstr "Exibido ao vencer o jogo"
 
 #: exe/engine/clickinorderidevice.py:63
 msgid "Shown over game when correct answer given"
-msgstr ""
+msgstr "Exibido durante o jogo quando acerta a resposta"
 
 #: exe/engine/clickinorderidevice.py:63
 #: exe/webui/scripts/idevices/scrambled-list/edition/scrambled-list.js:41
@@ -481,95 +483,95 @@ msgstr ""
 
 #: exe/engine/clickinorderidevice.py:65
 msgid "Main Area To Show"
-msgstr ""
+msgstr "Área Principal a Exibir"
 
 #: exe/engine/clickinorderidevice.py:65
 msgid "The Main Game Area on which to locate items"
-msgstr ""
+msgstr "A Área Principal na qual localizar itens"
 
 #: exe/engine/clickinorderidevice.py:66
 msgid "Area shown before the game starts"
-msgstr ""
+msgstr "Área mostrada antes do início do jogo"
 
 #: exe/engine/clickinorderidevice.py:66
 msgid "User will click on this to start the game"
-msgstr ""
+msgstr "O usuário clicará nisso para iniciar o jogo"
 
 #: exe/engine/clickinorderidevice.py:78
 msgid "Game Width"
-msgstr ""
+msgstr "Largura do Jogo"
 
 #: exe/engine/clickinorderidevice.py:78
 msgid "Width of game area (in pixels)"
-msgstr ""
+msgstr "Largura da área do jogo (em pixels)"
 
 #: exe/engine/clickinorderidevice.py:79
 msgid "Game Height"
-msgstr ""
+msgstr "Altura do Jogo"
 
 #: exe/engine/clickinorderidevice.py:79
 msgid "Height of game area (in pixels)"
-msgstr ""
+msgstr "Altura da área do jogo (em pixels)"
 
 #: exe/engine/clickinorderidevice.py:80
 msgid "Style of Element Counter"
-msgstr ""
+msgstr "Estilo do Contador de Elementos"
 
 #: exe/engine/clickinorderidevice.py:80
 msgid "Use CSS to style element that counts number items found"
-msgstr ""
+msgstr "Use CSS para estilizar o elemento que conta o número de itens encontrados"
 
 #: exe/engine/clickinorderidevice.py:81
 msgid "Hint Width"
-msgstr ""
+msgstr "Largura da Dica"
 
 #: exe/engine/clickinorderidevice.py:81
 msgid "Width (px) of hint area"
-msgstr ""
+msgstr "Largura (px) da área de dicas"
 
 #: exe/engine/clickinorderidevice.py:82
 msgid "Hint Height"
-msgstr ""
+msgstr "Altura da Dica"
 
 #: exe/engine/clickinorderidevice.py:82
 msgid "Height (px) of hint area"
-msgstr ""
+msgstr "Altura (px) da área de dicas"
 
 #: exe/engine/clickinorderidevice.py:83
 msgid "Hint Area Style"
-msgstr ""
+msgstr "Estilo da Área de Dicas"
 
 #: exe/engine/clickinorderidevice.py:83
 msgid "Style of Hint Area"
-msgstr ""
+msgstr "Estilo da Área de Dicas"
 
 #: exe/engine/clickinorderidevice.py:84
 msgid "Style of timer Element"
-msgstr ""
+msgstr "Estilo do cronômetro do Elemento"
 
 #: exe/engine/clickinorderidevice.py:84
 msgid "Style of timer (CSS)"
-msgstr ""
+msgstr "Estilo do cronômetro (CSS)"
 
 #: exe/engine/clickinorderidevice.py:98 exe/engine/clickinorderidevice.py:100
 msgid "Dont Shuffle"
-msgstr ""
+msgstr "Não Embaralhar"
 
 #: exe/engine/clickinorderidevice.py:98 exe/engine/clickinorderidevice.py:101
 msgid "Shuffle"
-msgstr ""
+msgstr "Embaralhar"
 
 #: exe/engine/clickinorderidevice.py:103 exe/engine/clickinorderidevice.py:104
 msgid "No Timer"
-msgstr ""
+msgstr "Sem Cronômetro"
 
 #: exe/engine/clickinorderidevice.py:103 exe/engine/clickinorderidevice.py:105
 msgid "Stopwatch Mode"
-msgstr ""
+msgstr "Modo Cronômetro"
 
 #: exe/engine/clickinorderidevice.py:107
 msgid "Shuffle Questions"
-msgstr ""
+msgstr "Embaralhar Questões"
 
 #: exe/engine/clickinorderidevice.py:107
 msgid "Randomize question order or not"
@@ -577,15 +579,15 @@ msgstr ""
 
 #: exe/engine/clickinorderidevice.py:108
 msgid "Use a Timer"
-msgstr ""
+msgstr "Usar Contador"
 
 #: exe/engine/clickinorderidevice.py:108 exe/engine/memorymatchidevice.py:73
 msgid "Use Timer?"
-msgstr ""
+msgstr "Usar Contador?"
 
 #: exe/engine/clickinorderidevice.py:115
 msgid "Clickable Area"
-msgstr ""
+msgstr "Área Clicável"
 
 #: exe/engine/clickinorderidevice.py:152
 msgid "Top (Y) Coord"
@@ -605,43 +607,43 @@ msgstr ""
 
 #: exe/engine/clickinorderidevice.py:154
 msgid "Width (px)"
-msgstr ""
+msgstr "Largura (px)"
 
 #: exe/engine/clickinorderidevice.py:154
 msgid "Width of clickable area"
-msgstr ""
+msgstr "Largura da área clicável"
 
 #: exe/engine/clickinorderidevice.py:155
 msgid "Height (px)"
-msgstr ""
+msgstr "Altura (px)"
 
 #: exe/engine/clickinorderidevice.py:155
 msgid "Height of clickable area"
-msgstr ""
+msgstr "Altura da área clicável"
 
 #: exe/engine/clickinorderidevice.py:156
 msgid "Delay (ms) to hide revealed contents"
-msgstr ""
+msgstr "Espera (ms) para ocultar itens revelados"
 
 #: exe/engine/clickinorderidevice.py:156
 msgid "After delay ms hide the content prev revealed"
-msgstr ""
+msgstr "Após esperar ms, oculta o conteúdo que foi revelado"
 
 #: exe/engine/clickinorderidevice.py:166
 msgid "Hint to Show for this item"
-msgstr ""
+msgstr "Dica para Exibir para este item"
 
 #: exe/engine/clickinorderidevice.py:166
 msgid "The hint that will appear under the map for this item"
-msgstr ""
+msgstr "A dica que aparecerá sob o mapa para este item"
 
 #: exe/engine/clickinorderidevice.py:167
 msgid "Item Revealed"
-msgstr ""
+msgstr "Item Revelado"
 
 #: exe/engine/clickinorderidevice.py:167
 msgid "The Item that will be revealed in place"
-msgstr ""
+msgstr "O item que será revelado no lugar"
 
 #: exe/engine/clozefpdidevice.py:50
 msgid "FPD - Cloze Activity"
@@ -743,8 +745,8 @@ msgid ""
 "completed. Default text will be entered if there are no changes to this "
 "field.\n"
 msgstr ""
-"Fornecer as instruções de como a actividade cloze deve ser \n"
-"completada. O texto por defeito entrará se não efectuar alterações neste "
+"Fornecer as instruções de como a atividade cloze deve ser \n"
+"completada. O texto padrão entrará se não efetuar alterações neste "
 "campo. \n"
 
 #: exe/engine/clozefpdidevice.py:126 exe/engine/clozeidevice.py:126
@@ -15906,27 +15908,27 @@ msgstr ""
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:807
 msgid "Link behaviour:"
-msgstr ""
+msgstr "Comportamento do link:"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:816
 msgid "Open in the same window"
-msgstr ""
+msgstr "Abrir na mesma janela"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:817
 msgid "Open in a new window"
-msgstr ""
+msgstr "Abrir em nova janela"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:824
 msgid "Appearance"
-msgstr ""
+msgstr "Aparência"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:840
 msgid "Change the styling:"
-msgstr ""
+msgstr "Mude o estilo:"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:842
 msgid "Yellow"
-msgstr ""
+msgstr "Amarelo"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:843
 #, fuzzy
@@ -15935,57 +15937,57 @@ msgstr "Direita"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:844
 msgid "Dark"
-msgstr ""
+msgstr "Escuro"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:845
 msgid "Red"
-msgstr ""
+msgstr "Vermelho"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:846
 msgid "Blue"
-msgstr ""
+msgstr "Azul"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:847
 msgid "Green"
-msgstr ""
+msgstr "Verde"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:861
 msgid "Rounded"
-msgstr ""
+msgstr "Arredondado"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/tooltips/plugin.min.js:870
 msgid "Shadow"
-msgstr ""
+msgstr "Sombra"
 
 #: exe/webui/scripts/tinymce_4_settings.js:23
 #: exe/webui/scripts/tinymce_4_settings.js:24
 #: exe/webui/scripts/tinymce_4_settings.js:25
 msgid "2 columns"
-msgstr ""
+msgstr "2 colunas"
 
 #: exe/webui/scripts/tinymce_4_settings.js:26
 msgid "3 columns"
-msgstr ""
+msgstr "2 colunas"
 
 #: exe/webui/scripts/tinymce_4_settings.js:27
 msgid "Image (left) + Text (right)"
-msgstr ""
+msgstr "Imagem (esq.) + Texto (dir.)"
 
 #: exe/webui/scripts/tinymce_4_settings.js:28
 msgid "Text (left) + Image (right)"
-msgstr ""
+msgstr "Texto (esq.) + Imagem (dir.)"
 
 #: exe/webui/scripts/tinymce_4_settings.js:29
 msgid "Table with column headers"
-msgstr ""
+msgstr "Tabela com coluna de cabeçalho"
 
 #: exe/webui/scripts/tinymce_4_settings.js:30
 msgid "Table with row headers"
-msgstr ""
+msgstr "Tabela com linha de cabeçalho"
 
 #: exe/webui/scripts/tinymce_4_settings.js:31
 msgid "Table with column and row headers"
-msgstr ""
+msgstr "Tabela com cabeçalhos na coluna e linha"
 
 #: exe/webui/scripts/tinymce_4_settings.js:32
 msgid "2 videos"
@@ -15993,11 +15995,11 @@ msgstr ""
 
 #: exe/webui/scripts/tinymce_4_settings.js:33
 msgid "2 images"
-msgstr ""
+msgstr "2 imagens"
 
 #: exe/webui/scripts/tinymce_4_settings.js:34
 msgid "3 images"
-msgstr ""
+msgstr "3 imagens"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:50
 #: exe/webui/scripts/tinymce_4_settings.js:211
@@ -16007,51 +16009,51 @@ msgstr ""
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:37
 #: exe/webui/scripts/tinymce_4_settings.js:212
 msgid "Bold"
-msgstr ""
+msgstr "Negrito"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:39
 #: exe/webui/scripts/tinymce_4_settings.js:213
 msgid "Italic"
-msgstr ""
+msgstr "Itálico"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:47
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/style/langs/all_dlg.js:1
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/style/langs/en_dlg.js:1
 #: exe/webui/scripts/tinymce_4_settings.js:214
 msgid "Underline"
-msgstr ""
+msgstr "Sublinhado"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:26
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/style/langs/all_dlg.js:1
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/style/langs/en_dlg.js:1
 #: exe/webui/scripts/tinymce_4_settings.js:215
 msgid "Strikethrough"
-msgstr ""
+msgstr "Riscado"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:29
 #: exe/webui/scripts/tinymce_4_settings.js:216
 msgid "Superscript"
-msgstr ""
+msgstr "Sobreescrito"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:32
 #: exe/webui/scripts/tinymce_4_settings.js:217
 msgid "Subscript"
-msgstr ""
+msgstr "Subescrito"
 
 #: exe/webui/scripts/tinymce_4/js/tinymce/langs/all.js:38
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/exemedia/plugin.min.js:588
 #: exe/webui/scripts/tinymce_4/js/tinymce/plugins/pastemath/plugin.min.js:678
 #: exe/webui/scripts/tinymce_4_settings.js:218
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 #: exe/webui/scripts/tinymce_4_settings.js:221
 msgid "Deletion"
-msgstr ""
+msgstr "Deleção"
 
 #: exe/webui/scripts/tinymce_4_settings.js:222
 msgid "Insertion"
-msgstr ""
+msgstr "Inserção"
 
 #: exe/webui/scripts/tinymce_4_settings.js:223
 msgid "Cite"
@@ -16265,7 +16267,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:22
 msgid "How to create a project"
-msgstr ""
+msgstr "Como criar um projeto"
 
 #: exe/webui/tools/assistant/langs/all.js:23
 msgid "Create a project"
@@ -16325,7 +16327,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:40
 msgid "You can delete it using \"Delete\"."
-msgstr ""
+msgstr "Você pode apagar isto com \"Delete\"."
 
 #: exe/webui/tools/assistant/langs/all.js:41
 msgid ""
@@ -16335,15 +16337,15 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:43
 msgid "Once the page is created you can add content."
-msgstr ""
+msgstr "Assim que a páigna é criada, você pode adicionar conteúdo."
 
 #: exe/webui/tools/assistant/langs/all.js:44
 msgid "How to add content"
-msgstr ""
+msgstr "Como adicionar conteúdo"
 
 #: exe/webui/tools/assistant/langs/all.js:45
 msgid "Adding content"
-msgstr ""
+msgstr "Adicionando conteúdo"
 
 #: exe/webui/tools/assistant/langs/all.js:46
 msgid "On the bottom left of the screen there is an area iDevices."
@@ -16361,7 +16363,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:49
 msgid "A simple test:"
-msgstr ""
+msgstr "Um teste simples:"
 
 #: exe/webui/tools/assistant/langs/all.js:50
 msgid ""
@@ -16371,7 +16373,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:51
 msgid "Write something."
-msgstr ""
+msgstr "Escreva algo."
 
 #: exe/webui/tools/assistant/langs/all.js:52
 msgid "Save it clicking on the button below the editor: "
@@ -16454,7 +16456,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:69
 msgid "More Options"
-msgstr ""
+msgstr "Mais Opções"
 
 #: exe/webui/tools/assistant/langs/all.js:70
 msgid ""
@@ -16465,7 +16467,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:71
 msgid "Further help options:"
-msgstr ""
+msgstr "Mais opções de ajuda:"
 
 #: exe/webui/tools/assistant/langs/all.js:74
 msgid "(resolve your doubts)"
@@ -16473,7 +16475,7 @@ msgstr ""
 
 #: exe/webui/tools/assistant/langs/all.js:76
 msgid "Further information:"
-msgstr ""
+msgstr "Mais informações:"
 
 #: exe/webui/tools/assistant/langs/all.js:81
 msgid "Open Link in a New Window"
@@ -16506,68 +16508,68 @@ msgstr ""
 
 #: exe/webui/tools/color-picker/langs/all.js:18
 msgid "Cancel and revert to original color"
-msgstr ""
+msgstr "Cancelar e reverter para cor original"
 
 #: exe/webui/tools/color-picker/langs/all.js:21
 msgid "Set to Hue color mode"
-msgstr ""
+msgstr "Definir modo de Constraste de cor"
 
 #: exe/webui/tools/color-picker/langs/all.js:22
 msgid "Enter a Hue value (0-360º)"
-msgstr ""
+msgstr "Dê um valor de Constraste (0-360º)"
 
 #: exe/webui/tools/color-picker/langs/all.js:25
 msgid "Set to Saturation color mode"
-msgstr ""
+msgstr "Definir modo de Saturação de cor"
 
 #: exe/webui/tools/color-picker/langs/all.js:26
 msgid "Enter a Saturation value (0-100%)"
-msgstr ""
+msgstr "Dê um valor de Saturação (0-100%)"
 
 #: exe/webui/tools/color-picker/langs/all.js:29
 msgid "Set to Value color mode"
-msgstr ""
+msgstr "Definir modo de Valor de cor"
 
 #: exe/webui/tools/color-picker/langs/all.js:30
 msgid "Enter a Value (0-100%)"
-msgstr ""
+msgstr "Dê um Valor (0-100%)"
 
 #: exe/webui/tools/color-picker/langs/all.js:33
 msgid "Set to Red color mode"
-msgstr ""
+msgstr "Definir modo de cor Vermelho"
 
 #: exe/webui/tools/color-picker/langs/all.js:34
 msgid "Enter a Red value (0-255)"
-msgstr ""
+msgstr "Dê um valor para o Vermelho (0-255)"
 
 #: exe/webui/tools/color-picker/langs/all.js:37
 msgid "Set to Green color mode"
-msgstr ""
+msgstr "Definir modo de cor Verde"
 
 #: exe/webui/tools/color-picker/langs/all.js:38
 msgid "Enter a Green value (0-255)"
-msgstr ""
+msgstr "Dê um valor para o Verde (0-255)"
 
 #: exe/webui/tools/color-picker/langs/all.js:41
 msgid "Set to Blue color mode"
-msgstr ""
+msgstr "Definir modo de cor Azul"
 
 #: exe/webui/tools/color-picker/langs/all.js:42
 msgid "Enter a Blue value (0-255)"
-msgstr ""
+msgstr "Dê um valor para o Azul (0-255)"
 
 #: exe/webui/tools/color-picker/langs/all.js:45
 msgid "Set to Alpha color mode"
-msgstr ""
+msgstr "Definir modo de cor Alfa"
 
 #: exe/webui/tools/color-picker/langs/all.js:46
 #: exe/webui/tools/color-picker/langs/all.js:50
 msgid "Enter an Alpha value (0-100)"
-msgstr ""
+msgstr "Forneça um valor Alfa (0-100)"
 
 #: exe/webui/tools/color-picker/langs/all.js:49
 msgid "Enter an Hex color value (#000000-#ffffff)"
-msgstr ""
+msgstr "Forneça um valor Hex (#000000-#ffffff)"
 
 #: exe/webui/tools/fMath/js/jquery-ui/jquery-ui.min.js:8
 msgid "'"
@@ -16579,23 +16581,23 @@ msgstr ""
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:9
 msgid "Max width"
-msgstr ""
+msgstr "Largura mín."
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:10
 msgid "Max height"
-msgstr ""
+msgstr "Largura máx."
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:13
 msgid "Quality"
-msgstr ""
+msgstr "Qualidade"
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:15
 msgid "Before"
-msgstr ""
+msgstr "Antes"
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:16
 msgid "After"
-msgstr ""
+msgstr "Depois"
 
 #: exe/webui/tools/image-compressor/js/langs/all.js:18
 msgid ""
@@ -16612,7 +16614,7 @@ msgstr ""
 #: exe/webui/tools/mindmaps/src/js/Command.js:115
 #: exe/webui/tools/mindmaps/src/js/Command.js:117
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: exe/webui/tools/mindmaps/src/js/HelpController.js:52
 msgid "Welcome to mindmaps"
@@ -16620,11 +16622,11 @@ msgstr ""
 
 #: exe/webui/tools/mindmaps/src/js/MainViewController.js:167
 msgid "Inspector"
-msgstr ""
+msgstr "Inspetor"
 
 #: exe/webui/tools/mindmaps/src/js/MindMap.js:21
 msgid "Central Idea"
-msgstr ""
+msgstr "Ideia Central"
 
 #: exe/webui/tools/style-designer/js/app.js:1476
 msgid "Name the new style"
@@ -16636,12 +16638,12 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/js/app.js:1504
 msgid "Page will be reloaded. "
-msgstr ""
+msgstr "Página será recarregada."
 
 #: exe/webui/tools/style-designer/langs/all.js:15
 #, fuzzy
 msgid "Page width"
-msgstr "Imagem com Texto"
+msgstr "Largura da página"
 
 #: exe/webui/tools/style-designer/langs/all.js:16
 msgid "Percentage"
@@ -16653,28 +16655,28 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:18
 msgid "Page position"
-msgstr ""
+msgstr "Posição da página"
 
 #: exe/webui/tools/style-designer/langs/all.js:21
 msgid "Shadow color"
-msgstr ""
+msgstr "Cor da sombra"
 
 #: exe/webui/tools/style-designer/langs/all.js:22
 msgid "Border width"
-msgstr ""
+msgstr "Largura da borda"
 
 #: exe/webui/tools/style-designer/langs/all.js:24
 msgid "Text and Links"
-msgstr ""
+msgstr "Texto e Links"
 
 #: exe/webui/tools/style-designer/langs/all.js:29
 #, fuzzy
 msgid "Links"
-msgstr "Alinhar:"
+msgstr "Links:"
 
 #: exe/webui/tools/style-designer/langs/all.js:30
 msgid "Links color"
-msgstr ""
+msgstr "Cores dos links"
 
 #: exe/webui/tools/style-designer/langs/all.js:33
 #, fuzzy
@@ -16683,11 +16685,11 @@ msgstr "Descrição"
 
 #: exe/webui/tools/style-designer/langs/all.js:35
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: exe/webui/tools/style-designer/langs/all.js:37
 msgid "Author URL"
-msgstr ""
+msgstr "Autor da URL"
 
 #: exe/webui/tools/style-designer/langs/all.js:38
 #, fuzzy
@@ -16754,11 +16756,11 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:67
 msgid "Only vertical"
-msgstr ""
+msgstr "Só vertical"
 
 #: exe/webui/tools/style-designer/langs/all.js:68
 msgid "Only horizontal"
-msgstr ""
+msgstr "Só horizontal"
 
 #: exe/webui/tools/style-designer/langs/all.js:69
 msgid "Contents area background"
@@ -16790,39 +16792,39 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:78
 msgid "Header and Footer"
-msgstr ""
+msgstr "Cabeçalho e Rodapé"
 
 #: exe/webui/tools/style-designer/langs/all.js:82
 msgid "Project title"
-msgstr ""
+msgstr "Título do projeto"
 
 #: exe/webui/tools/style-designer/langs/all.js:83
 msgid "Hide the title"
-msgstr ""
+msgstr "Ocultar título"
 
 #: exe/webui/tools/style-designer/langs/all.js:85
 msgid "same font as the page"
-msgstr ""
+msgstr "mesma fonte da página"
 
 #: exe/webui/tools/style-designer/langs/all.js:88
 msgid "Top margin"
-msgstr ""
+msgstr "Margem superior"
 
 #: exe/webui/tools/style-designer/langs/all.js:93
 msgid "Main menu"
-msgstr ""
+msgstr "Menu principal"
 
 #: exe/webui/tools/style-designer/langs/all.js:94
 msgid "Hide the menu"
-msgstr ""
+msgstr "Ocultar menu"
 
 #: exe/webui/tools/style-designer/langs/all.js:95
 msgid "Horizontal navigation"
-msgstr ""
+msgstr "Navegação horizontal"
 
 #: exe/webui/tools/style-designer/langs/all.js:97
 msgid "Active background"
-msgstr ""
+msgstr "Ativar fundo"
 
 #: exe/webui/tools/style-designer/langs/all.js:98
 msgid "Active link color"
@@ -16830,27 +16832,27 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:99
 msgid "Other navigation options"
-msgstr ""
+msgstr "Outras opções de navegação"
 
 #: exe/webui/tools/style-designer/langs/all.js:100
 msgid "Use icons"
-msgstr ""
+msgstr "Use ícones"
 
 #: exe/webui/tools/style-designer/langs/all.js:102
 msgid "Icons color"
-msgstr ""
+msgstr "Cores dos ícones"
 
 #: exe/webui/tools/style-designer/langs/all.js:103
 msgid "Grey"
-msgstr ""
+msgstr "Cinza"
 
 #: exe/webui/tools/style-designer/langs/all.js:104
 msgid "White"
-msgstr ""
+msgstr "Branco"
 
 #: exe/webui/tools/style-designer/langs/all.js:105
 msgid "Black"
-msgstr ""
+msgstr "Preto"
 
 #: exe/webui/tools/style-designer/langs/all.js:108
 #, fuzzy
@@ -16859,27 +16861,27 @@ msgstr "Sem ênfase"
 
 #: exe/webui/tools/style-designer/langs/all.js:109
 msgid "Title color"
-msgstr ""
+msgstr "Cor do título"
 
 #: exe/webui/tools/style-designer/langs/all.js:110
 msgid "Title background"
-msgstr ""
+msgstr "Título de fundo"
 
 #: exe/webui/tools/style-designer/langs/all.js:111
 msgid "No emphasis (Free Text...)"
-msgstr ""
+msgstr "Sem ênfase (Texto Livre...)"
 
 #: exe/webui/tools/style-designer/langs/all.js:112
 msgid "Show box"
-msgstr ""
+msgstr "Ver caixa"
 
 #: exe/webui/tools/style-designer/langs/all.js:113
 msgid "Icon to hide/show the iDevice"
-msgstr ""
+msgstr "Ícone para ocultar/exibir o iDevice"
 
 #: exe/webui/tools/style-designer/langs/all.js:117
 msgid "This code will be included at the end of content.css"
-msgstr ""
+msgstr "Esse código será incluído no final do content.css"
 
 #: exe/webui/tools/style-designer/langs/all.js:118
 msgid "content.css is included any time you export, and always after base.css."
@@ -16887,7 +16889,7 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:119
 msgid "This code will be included at the end of nav.css"
-msgstr ""
+msgstr "Esse código será incluído no final do nav.css"
 
 #: exe/webui/tools/style-designer/langs/all.js:120
 msgid ""
@@ -16916,7 +16918,7 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:130
 msgid "Save as"
-msgstr ""
+msgstr "Salvar como"
 
 #: exe/webui/tools/style-designer/langs/all.js:132
 msgid "Save the current design and close the Style Designer?"
@@ -16924,12 +16926,12 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:133
 msgid "Save all changes? This cannot be undone."
-msgstr ""
+msgstr "Salvar todas as alterações? Isso não pode ser desfeito."
 
 #: exe/webui/tools/style-designer/langs/all.js:134
 #, fuzzy
 msgid "Style name:"
-msgstr "Nome do Ficheiro"
+msgstr "Nome do Estilo:"
 
 #: exe/webui/tools/style-designer/langs/all.js:136
 msgid "The Hide/Show menu option is disabled in the Style Designer"
@@ -16947,7 +16949,7 @@ msgstr ""
 
 #: exe/webui/tools/style-designer/langs/all.js:139
 msgid "This window will be closed. Please restart the tool."
-msgstr ""
+msgstr "Essa janela será fechada. Favor reiniciar a ferramenta."
 
 #: exe/webui/tools/style-designer/langs/all.js:142
 msgid "Undo changes since last time you saved? This cannot be undone. "
@@ -17178,14 +17180,14 @@ msgstr ""
 #~ msgstr "Próximo"
 
 #~ msgid "Time(minutes)"
-#~ msgstr ""
+#~ msgstr "Tempo (min)"
 
 #~ msgid "Game mode"
-#~ msgstr ""
+#~ msgstr "Modo jogo"
 
 #~ msgid "Card"
 #~ msgstr ""
 
 #~ msgid "Your finished all the operations."
-#~ msgstr ""
+#~ msgstr "Você concluiu todas as operações"
 
